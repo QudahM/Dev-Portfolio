@@ -19,199 +19,200 @@ interface SkillsSectionProps {
 
 const defaultSkills: Skill[] = [
   {
-    name: "React",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    description:
-      "Modern web application development with React and its ecosystem",
+    name: "Java",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    description: "Enterprise-level application development with Java",
     details: [
       {
         title: "Core Concepts",
+        items: ["OOP", "Collections", "Multithreading", "Stream API", "JVM"],
+      },
+      {
+        title: "Frameworks",
+        items: ["Spring Boot", "Hibernate", "JUnit", "Maven", "Gradle"],
+      },
+    ],
+  },
+  {
+    name: "Python",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    description: "Versatile programming for web, data science, and automation",
+    details: [
+      {
+        title: "Core Features",
         items: [
-          "Components",
-          "Hooks",
-          "Context",
-          "Props & State",
-          "Virtual DOM",
+          "Data Structures",
+          "OOP",
+          "Generators",
+          "Decorators",
+          "Async IO",
         ],
       },
       {
-        title: "Related Technologies",
-        items: [
-          "Redux",
-          "React Query",
-          "React Router",
-          "Styled Components",
-          "Framer Motion",
-        ],
+        title: "Libraries",
+        items: ["NumPy", "Pandas", "Django", "Flask", "Pytest"],
+      },
+    ],
+  },
+  {
+    name: "JavaScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    description: "Dynamic web development and browser scripting",
+    details: [
+      {
+        title: "Core Concepts",
+        items: ["ES6+", "Async/Await", "Closures", "DOM", "Event Loop"],
       },
       {
-        title: "Development Tools",
-        items: ["Create React App", "Vite", "React DevTools", "ESLint", "Jest"],
+        title: "Tools",
+        items: ["Webpack", "Babel", "ESLint", "Jest", "npm"],
       },
     ],
   },
   {
     name: "TypeScript",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-    description: "Type-safe JavaScript development with TypeScript",
+    description: "Type-safe JavaScript development",
     details: [
       {
-        title: "Core Features",
-        items: [
-          "Static Typing",
-          "Interfaces",
-          "Generics",
-          "Decorators",
-          "Type Inference",
-        ],
+        title: "Features",
+        items: ["Types", "Interfaces", "Generics", "Decorators", "Modules"],
       },
       {
-        title: "Advanced Concepts",
-        items: [
-          "Union Types",
-          "Utility Types",
-          "Type Guards",
-          "Mapped Types",
-          "Conditional Types",
-        ],
+        title: "Tools",
+        items: ["TSC", "TSLint", "Type Definitions", "Debugging", "Testing"],
+      },
+    ],
+  },
+  {
+    name: "HTML/CSS3",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    description: "Web markup and styling fundamentals",
+    details: [
+      {
+        title: "HTML5",
+        items: ["Semantics", "Forms", "Canvas", "WebStorage", "Media"],
+      },
+      {
+        title: "CSS3",
+        items: ["Flexbox", "Grid", "Animations", "Media Queries", "Variables"],
+      },
+    ],
+  },
+  {
+    name: "React",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    description: "Modern UI development with React",
+    details: [
+      {
+        title: "Core",
+        items: ["Components", "Hooks", "Context", "State", "Props"],
+      },
+      {
+        title: "Ecosystem",
+        items: ["Redux", "React Query", "Router", "Testing", "Next.js"],
       },
     ],
   },
   {
     name: "Node.js",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-    description: "Server-side JavaScript development with Node.js",
+    description: "Server-side JavaScript runtime",
     details: [
       {
-        title: "Core Modules",
-        items: ["HTTP", "File System", "Events", "Streams", "Buffer"],
+        title: "Core",
+        items: [
+          "Express",
+          "REST APIs",
+          "Authentication",
+          "WebSockets",
+          "Testing",
+        ],
       },
       {
-        title: "Frameworks & Tools",
-        items: ["Express.js", "NestJS", "PM2", "Jest", "Socket.IO"],
+        title: "Database",
+        items: ["MongoDB", "PostgreSQL", "Redis", "ORMs", "Migrations"],
       },
     ],
   },
   {
-    name: "Next.js",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-    description: "The React Framework for Production",
+    name: "FastAPI",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+    description: "Modern Python web framework",
     details: [
       {
-        title: "Key Features",
-        items: [
-          "Server Components",
-          "App Router",
-          "API Routes",
-          "Static Generation",
-          "Image Optimization",
-        ],
+        title: "Features",
+        items: ["AsyncIO", "Type Hints", "OpenAPI", "WebSockets", "Security"],
       },
       {
-        title: "Full Stack Features",
+        title: "Tools",
+        items: ["Pydantic", "SQLAlchemy", "Alembic", "Testing", "Docker"],
+      },
+    ],
+  },
+  {
+    name: "Apache Kafka",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg",
+    description: "Distributed streaming platform",
+    details: [
+      {
+        title: "Core",
+        items: ["Topics", "Partitions", "Producers", "Consumers", "Brokers"],
+      },
+      {
+        title: "Features",
         items: [
-          "Server Actions",
-          "Route Handlers",
-          "Middleware",
-          "Edge Runtime",
-          "Data Fetching",
+          "Streaming",
+          "Event Processing",
+          "Scaling",
+          "Monitoring",
+          "Security",
         ],
       },
     ],
   },
   {
-    name: "TailwindCSS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
-    description: "Utility-first CSS framework for rapid UI development",
+    name: "MongoDB",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    description: "NoSQL database for modern applications",
     details: [
       {
-        title: "Core Concepts",
-        items: [
-          "Utility Classes",
-          "Responsive Design",
-          "Dark Mode",
-          "Custom Variants",
-          "JIT Compiler",
-        ],
+        title: "Core",
+        items: ["CRUD", "Aggregation", "Indexing", "Replication", "Sharding"],
       },
       {
-        title: "Ecosystem",
-        items: [
-          "Plugins",
-          "Configuration",
-          "PostCSS",
-          "Headless UI",
-          "Forms Plugin",
-        ],
+        title: "Tools",
+        items: ["Compass", "Atlas", "Mongoose", "Backup", "Security"],
       },
     ],
   },
   {
     name: "Docker",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-    description: "Containerization and deployment of applications",
+    description: "Container platform for modern applications",
     details: [
       {
-        title: "Core Concepts",
-        items: [
-          "Containers",
-          "Images",
-          "Dockerfile",
-          "Docker Compose",
-          "Networks",
-        ],
+        title: "Core",
+        items: ["Containers", "Images", "Networks", "Volumes", "Compose"],
       },
       {
-        title: "Orchestration",
-        items: [
-          "Kubernetes",
-          "Swarm",
-          "Load Balancing",
-          "Service Discovery",
-          "Volumes",
-        ],
-      },
-    ],
-  },
-  {
-    name: "AWS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
-    description: "Cloud computing and infrastructure services",
-    details: [
-      {
-        title: "Core Services",
-        items: ["EC2", "S3", "Lambda", "RDS", "DynamoDB"],
-      },
-      {
-        title: "DevOps Tools",
-        items: [
-          "CloudFormation",
-          "CodePipeline",
-          "CodeBuild",
-          "CloudWatch",
-          "Route 53",
-        ],
+        title: "Advanced",
+        items: ["Swarm", "Registry", "Security", "Monitoring", "CI/CD"],
       },
     ],
   },
   {
     name: "Git",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-    description: "Version control and collaboration",
+    description: "Version control system",
     details: [
       {
-        title: "Core Operations",
-        items: ["Branching", "Merging", "Rebasing", "Cherry Picking", "Tags"],
+        title: "Core",
+        items: ["Commits", "Branches", "Merging", "Rebasing", "Tags"],
       },
       {
         title: "Collaboration",
-        items: [
-          "Pull Requests",
-          "Code Review",
-          "CI/CD",
-          "Git Flow",
-          "Trunk Based",
-        ],
+        items: ["Pull Requests", "Code Review", "CI/CD", "GitFlow", "GitHub"],
       },
     ],
   },
