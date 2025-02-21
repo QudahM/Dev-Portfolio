@@ -10,6 +10,7 @@ interface WorkExperience {
   id: number;
   role: string;
   company: string;
+  logo: string;
   duration: string;
   description: string[];
   technologies: string[];
@@ -25,11 +26,12 @@ const defaultExperiences: WorkExperience[] = [
     id: 1,
     role: "Senior Software Engineer",
     company: "Tech Solutions Inc.",
+    logo: "assets/logos/sunlife.png",
     duration: "2021 - Present",
     description: [
-      "Led development of microservices architecture improving system scalability by 200%",
-      "Mentored 5 junior developers and established code review guidelines",
-      "Improved system performance by 40% through optimization and caching",
+      "Developed a scalable microservice pipeline to process 10,000+ data files daily, leveraging Apache Kafka to enhance data streaming and JSON processing, reducing data streaming latency by 15% and optimizing system throughput.",
+      "Implemented Kafka Stream processing functions and generated unit tests for Java microservices, increasing test coverage, reducing production errors by 8%, and enhancing system reliability for thousands of employees.",
+      "Optimized data storage and retrieval by refining MongoDB schema design and indexing, reducing query execution times and improving accessibility for over 100,000+ Kafka messages across 100+ topics.",
       "Implemented CI/CD pipeline reducing deployment time by 60%",
     ],
     responsibilities: [
@@ -51,6 +53,7 @@ const defaultExperiences: WorkExperience[] = [
     id: 2,
     role: "Full Stack Developer",
     company: "Digital Innovations Ltd",
+    logo: "assets/logos/eWorx.jpg",
     duration: "2019 - 2021",
     description: [
       "Developed and maintained 10+ client applications with 99.9% uptime",
@@ -77,6 +80,7 @@ const defaultExperiences: WorkExperience[] = [
     id: 3,
     role: "Software Developer",
     company: "StartUp Tech",
+    logo: "assets/logos/AIMS.jpg",
     duration: "2017 - 2019",
     description: [
       "Built responsive web applications serving 100K+ monthly users",
@@ -160,7 +164,15 @@ const WorkExperienceSection = ({
                         {exp.role}
                       </CardTitle>
                       <div className="flex items-center gap-2 text-gray-600 mt-1">
-                        <Building2 className="w-4 h-4" />
+                        {exp.logo ? (
+                          <img
+                            src={exp.logo}
+                            alt={`${exp.company} logo`}
+                            className="w-10 h-10 object-contain"
+                          />
+                        ) : (
+                          <Building2 className="w-4 h-4" />
+                        )}
                         <span>{exp.company}</span>
                         <span className="mx-1">•</span>
                         <Calendar className="w-4 h-4" />
@@ -172,7 +184,7 @@ const WorkExperienceSection = ({
                       size="icon"
                       className={`transition-transform duration-300 ${hoveredId === exp.id ? "translate-x-2" : ""}`}
                     >
-                      <ChevronRight className="w-5 h-5" />
+                      <ChevronRight className="w-9 h-8" />
                     </Button>
                   </div>
                 </CardHeader>

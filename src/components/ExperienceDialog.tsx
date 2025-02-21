@@ -8,6 +8,7 @@ interface ExperienceDialogProps {
   experience: {
     role: string;
     company: string;
+    logo?: string;
     duration: string;
     description: string[];
     technologies: string[];
@@ -31,13 +32,20 @@ export function ExperienceDialog({
         </DialogHeader>
         <div className="mt-4 space-y-6">
           <div className="flex items-center gap-2 text-gray-600">
-            <Building2 className="w-5 h-5" />
+            {experience.logo ? (
+              <img
+                src={experience.logo}
+                alt={`${experience.company} logo`}
+                className="w-6 h-6 object-contain"
+              />
+            ) : (
+              <Building2 className="w-5 h-5" />
+            )}
             <span>{experience.company}</span>
             <span className="mx-2">•</span>
             <Calendar className="w-5 h-5" />
             <span>{experience.duration}</span>
           </div>
-
           <div className="space-y-4">
             <h3 className="font-semibold text-lg flex items-center gap-2">
               <Trophy className="w-5 h-5 text-yellow-500" />

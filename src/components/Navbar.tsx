@@ -67,13 +67,13 @@ const Navbar = ({
     >
       <div className="container flex h-16 items-center justify-between px-4">
         <div className="flex items-center space-x-2">
-          <Button
+          <label
             variant="ghost"
-            className="text-lg font-bold text-white hover:bg-gray-800/50"
+            className="text-lg font-bold text-white hover:bg-gray-800/50 font-cursive"
             onClick={() => onSectionClick("hero")}
           >
             Portfolio
-          </Button>
+          </label>
         </div>
 
         {/* Desktop Navigation */}
