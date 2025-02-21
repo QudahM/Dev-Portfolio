@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
@@ -20,13 +20,39 @@ const Navbar = ({
     { label: "Contact", section: "contact" },
   ];
 
+  const [activeSection, setActiveSection] = useState<string>("hero");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 100; // Offset for better trigger point
+
+      // Find the current section
+      for (const item of navItems) {
+        const element = document.getElementById(item.section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(item.section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const NavLinks = () => (
     <>
       {navItems.map((item) => (
         <Button
           key={item.section}
           variant="ghost"
-          className="text-sm font-medium text-gray-300 transition-colors hover:text-white hover:bg-gray-800/50"
+          className={`text-sm font-medium transition-colors hover:text-white hover:bg-gray-800/50 ${activeSection === item.section ? "text-white bg-gray-800/50" : "text-gray-300"}`}
           onClick={() => onSectionClick(item.section)}
         >
           {item.label}

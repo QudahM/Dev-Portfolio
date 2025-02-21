@@ -178,7 +178,7 @@ const WorkExperienceSection = ({
                 </CardHeader>
                 <CardContent>
                   <ul className="list-disc list-inside space-y-2 mb-4 text-gray-600">
-                    {exp.description.slice(0, 2).map((item, i) => (
+                    {exp.description.slice(0, 3).map((item, i) => (
                       <li key={i}>{item}</li>
                     ))}
                   </ul>
