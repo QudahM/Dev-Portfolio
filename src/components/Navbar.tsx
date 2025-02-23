@@ -69,7 +69,7 @@ const Navbar = ({
         <div className="flex items-center space-x-2">
           <label
             variant="ghost"
-            className="text-lg font-bold text-white hover:bg-gray-800/50 font-cursive"
+            className="text-lg font-bold text-white hover:bg-gray-800/50 font-mono"
             onClick={() => onSectionClick("hero")}
           >
             Portfolio

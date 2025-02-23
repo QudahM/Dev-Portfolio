@@ -23,7 +23,7 @@ const defaultProjects: Project[] = [
     id: 1,
     title: "E-Commerce Platform",
     description:
-      "A full-stack e-commerce solution with real-time inventory management",
+      "Developed a full-stack e-commerce platform using React for the frontend and Node.js with MongoDB for the backend. The platform features real-time inventory management, user authentication, and a responsive design for seamless shopping experiences across devices. Integrated payment gateways and implemented secure checkout processes.",
     imageUrl: "https://images.unsplash.com/photo-1557821552-17105176677c",
     demoUrl: "https://example.com/ecommerce",
     githubUrl: "https://github.com/example/ecommerce",
@@ -33,7 +33,8 @@ const defaultProjects: Project[] = [
   {
     id: 2,
     title: "Weather Dashboard",
-    description: "Real-time weather tracking application with interactive maps",
+    description:
+      "Built a real-time weather tracking application using React and TypeScript. The dashboard integrates with multiple weather APIs to provide up-to-date weather information, including temperature, humidity, and wind speed. Features interactive maps and customizable alerts for severe weather conditions.",
     imageUrl: "https://images.unsplash.com/photo-1592210454359-9043f067919b",
     demoUrl: "https://example.com/weather",
     githubUrl: "https://github.com/example/weather",
@@ -43,7 +44,8 @@ const defaultProjects: Project[] = [
   {
     id: 3,
     title: "Task Management API",
-    description: "RESTful API for task management with authentication",
+    description:
+      "Designed and implemented a RESTful API for task management using Node.js, Express, and PostgreSQL. The API supports CRUD operations for tasks, user authentication, and role-based access control. Implemented robust error handling and logging for better maintainability and debugging.",
     imageUrl: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b",
     demoUrl: "https://example.com/tasks-api",
     githubUrl: "https://github.com/example/tasks-api",
@@ -69,9 +71,7 @@ const ProjectsSection = ({
 
   return (
     <section className="py-16 px-4 bg-gray-900 relative overflow-hidden">
-      {/* Grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-      {/* Tech pattern overlay */}
       <div className="absolute inset-0">
         {[...Array(8)].map((_, i) => (
           <div

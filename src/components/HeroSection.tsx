@@ -20,11 +20,11 @@ interface HeroSectionProps {
 const HeroSection = ({
   name = "Mohammad Qudah",
   title = "Aspiring Software Engineer",
-  bio = "Building modern web applications with a focus on user experience and scalability. Specialized in React, Node.js, and cloud technologies.",
+  bio = "I'm a recent Computer Science graduate with hands-on experience in software development, microservices, and cloud technologies. Passionate about problem-solving and innovation.",
   imageUrl = profileImage,
   socialLinks = {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    github: "https://github.com/QudahM",
+    linkedin: "https://www.linkedin.com/in/qudahm/",
     resume: myResume,
   },
 }: HeroSectionProps) => {
@@ -93,7 +93,9 @@ const HeroSection = ({
             >
               Welcome to my portfolio
             </motion.h2>
-            <h1 className="text-5xl font-bold text-white">Hi, I'm {name}</h1>
+            <h1 className="text-5xl font-bold text-white relative z-10">
+              Hi, I'm {name}
+            </h1>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

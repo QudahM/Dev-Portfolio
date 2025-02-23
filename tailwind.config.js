@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        cursive: ["Dancing Script", "cursive"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -29,7 +29,7 @@ const ProjectCard = ({
   technologies = ["React", "TypeScript", "Tailwind"],
 }: ProjectCardProps) => {
   return (
-    <Card className="w-[360px] h-[400px] bg-white overflow-hidden flex flex-col relative z-10">
+    <Card className="w-[360px] h-[480px] bg-white overflow-hidden flex flex-col relative z-10">
       <div className="h-48 overflow-hidden">
         <img
           src={imageUrl}
@@ -50,7 +50,7 @@ const ProjectCard = ({
       </CardHeader>
 
       <CardContent className="p-4 pt-0">
-        <CardDescription className="text-sm text-gray-600 line-clamp-3">
+        <CardDescription className="text-sm text-gray-600 line-clamp-4">
           {description}
         </CardDescription>
       </CardContent>
