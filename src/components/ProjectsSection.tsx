@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ProjectCard from "./ProjectCard";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
+import { ProjectDialog } from "./ProjectDialog";
+import discord from "../assets/tartarus-bot.jpg";
 
 interface Project {
   id: number;
@@ -12,6 +14,9 @@ interface Project {
   githubUrl: string;
   technologies: string[];
   category: string;
+  features?: string[];
+  challenges?: string[];
+  date?: string;
 }
 
 interface ProjectsSectionProps {
@@ -21,36 +26,68 @@ interface ProjectsSectionProps {
 const defaultProjects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    date: "2024",
+    title: "Room Change AI",
     description:
-      "Developed a full-stack e-commerce platform using React for the frontend and Node.js with MongoDB for the backend. The platform features real-time inventory management, user authentication, and a responsive design for seamless shopping experiences across devices. Integrated payment gateways and implemented secure checkout processes.",
-    imageUrl: "https://images.unsplash.com/photo-1557821552-17105176677c",
-    demoUrl: "https://example.com/ecommerce",
-    githubUrl: "https://github.com/example/ecommerce",
-    technologies: ["React", "Node.js", "MongoDB"],
-    category: "Full Stack",
+      "An AI-powered room change request manager that streamlines the process of handling student accommodation changes. Built with modern web technologies and integrated with OpenAI's GPT for intelligent request processing.",
+    imageUrl: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5",
+    demoUrl: "https://roomchangeai.demo.com",
+    githubUrl: "https://github.com/QudahM/RoomChangeAI",
+    category: "AI/Web App",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "OpenAI",
+      "TailwindCSS",
+      "ShadcnUI",
+    ],
+    features: [
+      "AI-powered request analysis and processing",
+      "Smart room matching algorithm",
+      "Real-time request tracking",
+      "User-friendly interface for students and staff",
+      "Automated email notifications",
+    ],
   },
   {
     id: 2,
-    title: "Weather Dashboard",
+    date: "2024",
+    title: "Valentine Project",
     description:
-      "Built a real-time weather tracking application using React and TypeScript. The dashboard integrates with multiple weather APIs to provide up-to-date weather information, including temperature, humidity, and wind speed. Features interactive maps and customizable alerts for severe weather conditions.",
-    imageUrl: "https://images.unsplash.com/photo-1592210454359-9043f067919b",
-    demoUrl: "https://example.com/weather",
-    githubUrl: "https://github.com/example/weather",
-    technologies: ["React", "TypeScript", "APIs"],
+      "An interactive Valentine's Day web application featuring engaging animations and a playful user interface. Created with React and modern animation libraries for a delightful user experience.",
+    imageUrl: "https://images.unsplash.com/photo-1518199266791-5375a83190b7",
+    demoUrl: "https://valentine-project.vercel.app",
+    githubUrl: "https://github.com/QudahM/valentine-project",
     category: "Frontend",
+    technologies: ["React", "JavaScript", "CSS", "Framer Motion", "Vercel"],
+    features: [
+      "Interactive animations and transitions",
+      "Responsive design for all devices",
+      "Engaging user interactions",
+      "Custom animation sequences",
+      "Seamless deployment on Vercel",
+    ],
   },
   {
     id: 3,
-    title: "Task Management API",
+    date: "2023",
+    title: "Tartarus Discord Bot",
     description:
-      "Designed and implemented a RESTful API for task management using Node.js, Express, and PostgreSQL. The API supports CRUD operations for tasks, user authentication, and role-based access control. Implemented robust error handling and logging for better maintainability and debugging.",
-    imageUrl: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b",
-    demoUrl: "https://example.com/tasks-api",
-    githubUrl: "https://github.com/example/tasks-api",
-    technologies: ["Node.js", "Express", "PostgreSQL"],
-    category: "Backend",
+      "A feature-rich Discord bot built with Python, offering moderation tools, custom commands, and automated tasks for server management. Handles moderation for 2,000+ users efficiently.",
+    imageUrl: discord,
+    demoUrl:
+      "https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot",
+    githubUrl: "https://github.com/QudahM/TartarusBot",
+    category: "Bot",
+    technologies: ["Python", "Discord.py", "MongoDB", "asyncio", "Docker"],
+    features: [
+      "Advanced moderation commands",
+      "Custom server management tools",
+      "Automated welcome messages",
+      "Role management system",
+      "Logging and analytics",
+    ],
   },
 ];
 
@@ -58,6 +95,7 @@ const ProjectsSection = ({
   projects = defaultProjects,
 }: ProjectsSectionProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const categories = [
     "All",
@@ -82,7 +120,13 @@ const ProjectsSection = ({
               top: `${Math.random() * 100}%`,
               width: "150px",
               height: "150px",
-              background: `radial-gradient(circle at center, ${["rgba(59,130,246,0.1)", "rgba(147,51,234,0.1)", "rgba(236,72,153,0.1)"][i % 3]} 0%, transparent 70%)`,
+              background: `radial-gradient(circle at center, ${
+                [
+                  "rgba(59,130,246,0.1)",
+                  "rgba(147,51,234,0.1)",
+                  "rgba(236,72,153,0.1)",
+                ][i % 3]
+              } 0%, transparent 70%)`,
               borderRadius: "50%",
               animationDelay: `${Math.random() * 4}s`,
               animationDuration: "4s",
@@ -121,7 +165,7 @@ const ProjectsSection = ({
 
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center relative z-10"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-items-center relative z-10 max-w-[1800px] mx-auto"
         >
           {filteredProjects.map((project) => (
             <motion.div
@@ -139,10 +183,19 @@ const ProjectsSection = ({
                 demoUrl={project.demoUrl}
                 githubUrl={project.githubUrl}
                 technologies={project.technologies}
+                onClick={() => setSelectedProject(project)}
               />
             </motion.div>
           ))}
         </motion.div>
+
+        {selectedProject && (
+          <ProjectDialog
+            isOpen={!!selectedProject}
+            onClose={() => setSelectedProject(null)}
+            project={selectedProject}
+          />
+        )}
       </div>
     </section>
   );
