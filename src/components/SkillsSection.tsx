@@ -126,16 +126,16 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-green-500/10 hover:to-emerald-500/10",
   },
   {
-    name: "Docker",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    name: "MongoDB",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
     description: [
       "**Experience:**",
-      "• Containerized multiple applications and set up CI/CD pipelines",
-      "• Managed container orchestration with Docker Compose and Kubernetes",
+      "• Designed and optimized MongoDB schemas for various applications",
+      "• Implemented data aggregation pipelines and indexing strategies",
     ],
-    experience: ["Containers", "Compose", "Kubernetes", "CI/CD", "Monitoring"],
+    experience: ["Mongoose", "Atlas", "Aggregation", "Indexing", "Replication"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-indigo-500/10",
+      "hover:bg-gradient-to-r hover:from-green-500/10 hover:to-green-600/10",
   },
   {
     name: "AWS",
@@ -150,16 +150,16 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-orange-400/10 hover:to-yellow-500/10",
   },
   {
-    name: "MongoDB",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    name: "Docker",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
     description: [
       "**Experience:**",
-      "• Designed and optimized MongoDB schemas for various applications",
-      "• Implemented data aggregation pipelines and indexing strategies",
+      "• Containerized multiple applications and set up CI/CD pipelines",
+      "• Managed container orchestration with Docker Compose and Kubernetes",
     ],
-    experience: ["Mongoose", "Atlas", "Aggregation", "Indexing", "Replication"],
+    experience: ["Containers", "Compose", "Kubernetes", "CI/CD", "Monitoring"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-green-500/10 hover:to-green-600/10",
+      "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-indigo-500/10",
   },
   {
     name: "Git",

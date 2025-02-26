@@ -38,7 +38,7 @@ const defaultExperiences: WorkExperience[] = [
       "Develop and maintain Java-based microservices using Spring Boot",
       "Design and implement data processing pipelines using Apache Kafka",
       "Write comprehensive unit tests and documentation",
-      "Collaborate with team members on code reviews and best practices",
+      "Collaborate in Agile sprints, refining code and development with colleagues.",
     ],
     technologies: [
       "Java",
