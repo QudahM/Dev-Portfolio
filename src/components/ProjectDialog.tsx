@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Calendar, CheckCircle2 } from "lucide-react";
 
 interface ProjectDialogProps {

@@ -1,10 +1,10 @@
 import React from "react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Github, Linkedin, Mail, FileText } from "lucide-react";
-import myResume from "../assets/Mohammad Qudah-Resume.pdf";
+import myResume from "/Mohammad Qudah-Resume.pdf";
 
 interface ContactSectionProps {
   email?: string;

@@ -1,7 +1,7 @@
 // [build] library: 'shadcn'
 import { Loader2, Mail } from "lucide-react";
 
-import { Button } from "../components/ui/button";
+import { Button } from "@/components/ui/button";
 
 const meta = {
   title: "ui/Button",

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { Calendar, Building2, ChevronRight } from "lucide-react";
 import { ExperienceDialog } from "./ExperienceDialog";
 

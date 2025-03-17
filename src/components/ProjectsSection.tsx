@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import ProjectCard from "./ProjectCard";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ProjectDialog } from "./ProjectDialog";
-import discord from "../assets/tartarus-bot.jpg";
+import discord from "/tartarus-bot.jpg";
 
 interface Project {
   id: number;

@@ -1,7 +1,7 @@
 // [build] library: 'shadcn'
 import { ChevronsUpDown } from "lucide-react";
 
-import { Button } from "../components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,

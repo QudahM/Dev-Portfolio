@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, FileText } from "lucide-react";
-import profileImage from "../assets/profile.png";
-import myResume from "../assets/Mohammad Qudah-Resume.pdf";
+import profileImage from "/profile.png";
+import myResume from "/Mohammad Qudah-Resume.pdf";
 
 interface HeroSectionProps {
   name?: string;

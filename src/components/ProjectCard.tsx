@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, ArrowRight, Calendar } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { motion } from "framer-motion";

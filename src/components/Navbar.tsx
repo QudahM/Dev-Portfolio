@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "./ui/button";
-import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 interface NavbarProps {
@@ -67,13 +67,13 @@ const Navbar = ({
     >
       <div className="container flex h-16 items-center justify-between px-4">
         <div className="flex items-center space-x-2">
-          <label
+          <Button
             variant="ghost"
-            className="text-lg font-bold text-white hover:bg-gray-800/50 font-mono"
+            className="text-lg font-bold text-white hover:bg-blue-800/50 font-mono"
             onClick={() => onSectionClick("hero")}
           >
             Portfolio
-          </label>
+          </Button>
         </div>
 
         {/* Desktop Navigation */}
