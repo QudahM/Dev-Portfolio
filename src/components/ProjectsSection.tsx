@@ -31,7 +31,7 @@ const defaultProjects: Project[] = [
     description:
       "An AI-powered room change request manager that streamlines the process of handling student accommodation changes. Built with modern web technologies and integrated with OpenAI's GPT for intelligent request processing.",
     imageUrl: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5",
-    demoUrl: "https://roomchangeai.demo.com",
+    demoUrl: "https://github.com/QudahM/RoomChangeAI",
     githubUrl: "https://github.com/QudahM/RoomChangeAI",
     category: "AI/Web App",
     technologies: [
@@ -50,9 +50,9 @@ const defaultProjects: Project[] = [
       "Automated email notifications",
     ],
   },
-  {
+  /*{
     id: 2,
-    date: "2024",
+    date: "2025",
     title: "Valentine Project",
     description:
       "An interactive Valentine's Day web application featuring engaging animations and a playful user interface. Created with React and modern animation libraries for a delightful user experience.",
@@ -60,18 +60,18 @@ const defaultProjects: Project[] = [
     demoUrl: "https://valentine-project.vercel.app",
     githubUrl: "https://github.com/QudahM/valentine-project",
     category: "Frontend",
-    technologies: ["React", "JavaScript", "CSS", "Framer Motion", "Vercel"],
+    technologies: ["React", "JavaScript", "VITE", "TailWindCSS", "AWS"],
     features: [
       "Interactive animations and transitions",
       "Responsive design for all devices",
       "Engaging user interactions",
       "Custom animation sequences",
-      "Seamless deployment on Vercel",
+      "Seamless deployment on AWS",
     ],
-  },
+  },*/
   {
     id: 3,
-    date: "2023",
+    date: "2025",
     title: "Tartarus Discord Bot",
     description:
       "A feature-rich Discord bot built with Python, offering moderation tools, custom commands, and automated tasks for server management. Handles moderation for 2,000+ users efficiently.",
@@ -89,6 +89,25 @@ const defaultProjects: Project[] = [
       "Logging and analytics",
     ],
   },
+   /*{
+    id: 4,
+    date: "2024",
+    title: "Valentine Project",
+    description:
+      "An interactive Valentine's Day web application featuring engaging animations and a playful user interface. Created with React and modern animation libraries for a delightful user experience.",
+    imageUrl: "https://images.unsplash.com/photo-1518199266791-5375a83190b7",
+    demoUrl: "https://valentine-project.vercel.app",
+    githubUrl: "https://github.com/QudahM/valentine-project",
+    category: "Frontend",
+    technologies: ["React", "JavaScript", "VITE", "TailWindCSS", "AWS"],
+    features: [
+      "Interactive animations and transitions",
+      "Responsive design for all devices",
+      "Engaging user interactions",
+      "Custom animation sequences",
+      "Seamless deployment on AWS",
+    ],
+  },*/
 ];
 
 const ProjectsSection = ({
