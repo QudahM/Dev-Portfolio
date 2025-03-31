@@ -34,13 +34,7 @@ const defaultProjects: Project[] = [
     demoUrl: "https://roomchangeai.qudahm.com/",
     githubUrl: "https://github.com/QudahM/RoomChangeAI",
     category: "AI/Web App",
-    technologies: [
-      "React",
-      "TypeScript",
-      "Vite",
-      "OpenAI",
-      "TailwindCSS",
-    ],
+    technologies: ["TypeScript", "React", "OpenAI", "TailwindCSS", "Vite"],
     features: [
       "AI-powered request analysis and processing",
       "Smart room matching algorithm",
@@ -59,7 +53,7 @@ const defaultProjects: Project[] = [
     demoUrl: "https://www.reddit.com/r/Pixel0Shift/comments/1jjet6q/pixel_shift_daily_puzzle_can_you_beat_todays/",
     githubUrl: "https://github.com/QudahM/pixel-shift",
     category: "Fullstack",
-    technologies: ["React", "JavaScript", "Devvit", "HTML/CSS", "Rddit API"],
+    technologies: ["JavaScript", "React", "HTML/CSS", "Devvit", "Rddit API"],
     features: [
       "Winner of a prize at the Hack Reddit 2025 Hackathon",
       "Daily-generated puzzle pattern with seed consistency",
@@ -78,7 +72,7 @@ const defaultProjects: Project[] = [
     demoUrl: "https://github.com/QudahM/TartarusBot",
     githubUrl: "https://github.com/QudahM/TartarusBot",
     category: "Bot",
-    technologies: ["Python", "Discord.py", "MongoDB", "asyncio", "Docker"],
+    technologies: ["Python", "MongoDB", "AWS", "Docker", "Discord API"],
     features: [
       "Advanced moderation commands",
       "Custom server management tools",
