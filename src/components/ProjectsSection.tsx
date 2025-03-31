@@ -30,8 +30,8 @@ const defaultProjects: Project[] = [
     title: "Room Change AI",
     description:
       "An AI-powered room change request manager that streamlines the process of handling student accommodation changes. Built with modern web technologies and integrated with OpenAI's GPT for intelligent request processing.",
-    imageUrl: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5",
-    demoUrl: "https://github.com/QudahM/RoomChangeAI",
+    imageUrl: "/roomImage.png",
+    demoUrl: "https://roomchangeai.qudahm.com/",
     githubUrl: "https://github.com/QudahM/RoomChangeAI",
     category: "AI/Web App",
     technologies: [
@@ -40,7 +40,6 @@ const defaultProjects: Project[] = [
       "Vite",
       "OpenAI",
       "TailwindCSS",
-      "ShadcnUI",
     ],
     features: [
       "AI-powered request analysis and processing",
@@ -50,25 +49,25 @@ const defaultProjects: Project[] = [
       "Automated email notifications",
     ],
   },
-  /*{
+  {
     id: 2,
     date: "2025",
-    title: "Valentine Project",
+    title: "Pixel Shift Daily Puzzle",
     description:
-      "An interactive Valentine's Day web application featuring engaging animations and a playful user interface. Created with React and modern animation libraries for a delightful user experience.",
-    imageUrl: "https://images.unsplash.com/photo-1518199266791-5375a83190b7",
-    demoUrl: "https://valentine-project.vercel.app",
-    githubUrl: "https://github.com/QudahM/valentine-project",
-    category: "Frontend",
-    technologies: ["React", "JavaScript", "VITE", "TailWindCSS", "AWS"],
+      "A daily color-matching puzzle game built with Devvit and Reddit WebViews. Players rearrange tiles to match a randomly generated pattern using the fewest moves possible. Features leaderboard integration and smooth UI animations.",
+    imageUrl: "/redditHackathon.png",
+    demoUrl: "https://www.reddit.com/r/Pixel0Shift/comments/1jjet6q/pixel_shift_daily_puzzle_can_you_beat_todays/",
+    githubUrl: "https://github.com/QudahM/pixel-shift",
+    category: "Fullstack",
+    technologies: ["React", "JavaScript", "Devvit", "HTML/CSS", "Rddit API"],
     features: [
-      "Interactive animations and transitions",
-      "Responsive design for all devices",
-      "Engaging user interactions",
-      "Custom animation sequences",
-      "Seamless deployment on AWS",
+      "Winner of a prize at the Hack Reddit 2025 Hackathon",
+      "Daily-generated puzzle pattern with seed consistency",
+      "Redis-backed leaderboard that stores top scores per post",
+      "Interactive tile-shifting game built from scratch in JavaScript",
+      "Fully integrated with Reddit's Devvit platform"
     ],
-  },*/
+  },
   {
     id: 3,
     date: "2025",
@@ -76,8 +75,7 @@ const defaultProjects: Project[] = [
     description:
       "A feature-rich Discord bot built with Python, offering moderation tools, custom commands, and automated tasks for server management. Handles moderation for 2,000+ users efficiently.",
     imageUrl: discord,
-    demoUrl:
-      "https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=8&scope=bot",
+    demoUrl: "https://github.com/QudahM/TartarusBot",
     githubUrl: "https://github.com/QudahM/TartarusBot",
     category: "Bot",
     technologies: ["Python", "Discord.py", "MongoDB", "asyncio", "Docker"],

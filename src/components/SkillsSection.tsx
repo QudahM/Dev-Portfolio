@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Card } from "./ui/card";
-import { Badge } from "./ui/badge";
-import { SkillDialog } from "./SkillDialog";
+//import { Badge } from "./ui/badge";
+//import { SkillDialog } from "./SkillDialog";
 
 interface Skill {
   name: string;
@@ -182,8 +182,30 @@ const defaultSkills: Skill[] = [
 ];
 
 const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
-  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  const floatingAnimation = {
+    y: [0, -10, 0, 10, 0],
+    x: [0, 10, 0, -10, 0],
+    transition: {
+      duration: 10,
+      repeat: Infinity,
+      repeatType: "loop" as const,
+    },
+  };
+
+  const getCustomAnimation = (index: number) => ({
+    y: [0, -15 * ((index % 3) + 1), 0, 15 * ((index % 3) + 1), 0],
+    x: [0, 15 * ((index % 4) - 1.5), 0, -15 * ((index % 4) - 1.5), 0],
+    rotate: [0, index % 2 ? 3 : -3, 0, index % 2 ? -3 : 3, 0],
+    transition: {
+      duration: 8 + (index % 5),
+      repeat: Infinity,
+      repeatType: "loop" as const,
+      ease: "easeInOut",
+    },
+  });
 
   return (
     <section className="py-20 bg-gray-900 relative overflow-hidden">
@@ -207,7 +229,7 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4" ref={containerRef}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -218,7 +240,7 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
             Technical Skills
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto relative z-10">
-            Click on any skill to learn more about my experience and expertise
+            My technology stack and expertise
           </p>
         </motion.div>
 
@@ -226,22 +248,31 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
+              ref={(el) => (skillsRef.current[index] = el)}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
+              animate={getCustomAnimation(index)}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              onMouseEnter={() => setHoveredId(skill.name)}
-              onMouseLeave={() => setHoveredId(null)}
-              onClick={() => setSelectedSkill(skill)}
             >
               <Card
-                className={`p-6 transition-all duration-300 cursor-pointer bg-white/5 backdrop-blur-sm border-white/10 ${skill.gradient} ${hoveredId === skill.name ? "scale-[1.02] shadow-lg" : ""}`}
+                className={`p-6 transition-all duration-300 cursor-pointer bg-white/5 backdrop-blur-sm border-white/10 ${skill.gradient}`}
               >
                 <div className="flex flex-col items-center space-y-4">
                   <div className="w-16 h-16 rounded-xl bg-white/10 p-2 backdrop-blur-sm overflow-hidden border-2 border-black/50">
-                    <img
+                    <motion.img
                       src={skill.icon}
                       alt={skill.name}
-                      className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                      className="w-full h-full object-contain"
+                      animate={{
+                        rotate: [0, 0, 10, -10, 0],
+                        scale: [1, 1.1, 1, 0.9, 1],
+                      }}
+                      transition={{
+                        duration: 5 + (index % 3),
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        ease: "easeInOut",
+                      }}
                     />
                   </div>
                   <h3 className="font-medium text-lg text-center text-white">
@@ -254,13 +285,17 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
         </div>
       </div>
 
-      {selectedSkill && (
-        <SkillDialog
-          isOpen={!!selectedSkill}
-          onClose={() => setSelectedSkill(null)}
-          skill={selectedSkill}
-        />
-      )}
+      <style>{`
+        @keyframes pulse-glow {
+          0%,
+          100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.8;
+          }
+        }
+      `}</style>
     </section>
   );
 };
