@@ -63,7 +63,7 @@ const defaultSkills: Skill[] = [
     ],
     experience: ["Interfaces", "Generics", "Next.js"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-cyan-500/10",
+      "hover:bg-gradient-to-r hover:from-blue-700/10 hover:to-sky-400/10",
   },
   {
     name: "MongoDB",
@@ -75,7 +75,7 @@ const defaultSkills: Skill[] = [
     ],
     experience: ["Mongoose", "Atlas", "Aggregation", "Indexing", "Replication"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-green-500/10 hover:to-green-600/10",
+      "hover:bg-gradient-to-r hover:from-green-700/10 hover:to-green-400/10",
   },
   {
     name: "Express JS",
@@ -93,7 +93,7 @@ const defaultSkills: Skill[] = [
       "Web Components",
     ],
     gradient:
-      "hover:bg-gradient-to-r hover:from-orange-500/10 hover:to-red-500/10",
+      "hover:bg-gradient-to-r hover:from-gray-800/10 hover:to-gray-100/10",
   },
   {
     name: "React",
@@ -105,7 +105,7 @@ const defaultSkills: Skill[] = [
     ],
     experience: ["Hooks", "Next.js", "React Query", "Testing"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10",
+      "hover:bg-gradient-to-r hover:from-cyan-400/10 hover:to-blue-600/10",
   },
   {
     name: "Node.js",
