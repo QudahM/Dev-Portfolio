@@ -66,8 +66,20 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-cyan-500/10",
   },
   {
-    name: "HTML5",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    name: "MongoDB",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    description: [
+      "**Experience:**",
+      "• Designed and optimized MongoDB schemas for various applications",
+      "• Implemented data aggregation pipelines and indexing strategies",
+    ],
+    experience: ["Mongoose", "Atlas", "Aggregation", "Indexing", "Replication"],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-green-500/10 hover:to-green-600/10",
+  },
+  {
+    name: "Express JS",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
     description: [
       "**Experience:**",
       "• Implemented responsive UIs with HTML5 for React and FastAPI applications, improving user",
@@ -82,18 +94,6 @@ const defaultSkills: Skill[] = [
     ],
     gradient:
       "hover:bg-gradient-to-r hover:from-orange-500/10 hover:to-red-500/10",
-  },
-  {
-    name: "CSS3",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-    description: [
-      "**Experience:**",
-      "• Created responsive web designs using modern CSS techniques like Flexbox and Grid.",
-      "• Enhanced user experience by implementing CSS animations and transitions for smooth UI interactions.",
-    ],
-    experience: ["Flexbox", "Grid", "Animations", "Tailwind", "SASS"],
-    gradient:
-      "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-blue-600/10",
   },
   {
     name: "React",
@@ -126,16 +126,16 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-green-500/10 hover:to-emerald-500/10",
   },
   {
-    name: "MongoDB",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    name: "Tailwind CSS",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
     description: [
       "**Experience:**",
-      "• Designed and optimized MongoDB schemas for various applications",
-      "• Implemented data aggregation pipelines and indexing strategies",
+      "• Created responsive web designs using modern CSS techniques like Flexbox and Grid.",
+      "• Enhanced user experience by implementing CSS animations and transitions for smooth UI interactions.",
     ],
-    experience: ["Mongoose", "Atlas", "Aggregation", "Indexing", "Replication"],
+    experience: ["Flexbox", "Grid", "Animations", "Tailwind", "SASS"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-green-500/10 hover:to-green-600/10",
+      "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-blue-600/10",
   },
   {
     name: "AWS",
