@@ -199,6 +199,14 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
     y: [0, -15 * ((index % 3) + 1), 0, 15 * ((index % 3) + 1), 0],
     x: [0, 15 * ((index % 4) - 1.5), 0, -15 * ((index % 4) - 1.5), 0],
     rotate: [0, index % 2 ? 3 : -3, 0, index % 2 ? -3 : 3, 0],
+    scale: [1, 1 + (index % 3) * 0.1, 1, 1 - (index % 2) * 0.1, 1],
+    filter: [
+      "brightness(1) blur(0px)",
+      "brightness(1.1) blur(0px)",
+      "brightness(1) blur(0px)",
+      "brightness(0.9) blur(0px)",
+      "brightness(1) blur(0px)",
+    ],
     transition: {
       duration: 8 + (index % 5),
       repeat: Infinity,
@@ -214,12 +222,12 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
 
       {/* Animated circuit lines */}
       <div className="absolute inset-0">
-        {[...Array(6)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <div
             key={i}
             className="absolute h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"
             style={{
-              top: `${(i + 1) * 15}%`,
+              top: `${(i + 1) * 12}%`,
               left: 0,
               right: 0,
               transform: `rotate(${i % 2 ? 1 : -1}deg)`,
@@ -227,6 +235,32 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
             }}
           />
         ))}
+        {[...Array(10)].map(() => {
+        const uniqueKey = `particle-${Math.random()}`;
+        return (
+          <motion.div
+            key={uniqueKey}
+            className="absolute w-1 h-1 rounded-full bg-blue-400/30"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, Math.random() * 100 - 50],
+              x: [0, Math.random() * 100 - 50],
+              opacity: [0, 0.8, 0],
+              scale: [0, 1.5, 0],
+            }}
+            transition={{
+              duration: 5 + Math.random() * 5,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+              delay: Math.random() * 2, // Randomized delay
+            }}
+          />
+        );
+      })}
       </div>
 
       <div className="container mx-auto px-4" ref={containerRef}>
@@ -255,7 +289,8 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
               transition={{ duration: 0.3, delay: index * 0.1 }}
             >
               <Card
-                className={`p-6 transition-all duration-300 cursor-pointer bg-white/5 backdrop-blur-sm border-white/10 ${skill.gradient}`}
+                className={`p-6 transition-all duration-300 cursor-pointer bg-white/5 backdrop-blur-sm border-white/10 
+                ${skill.gradient} hover:shadow-lg hover:shadow-${skill.name.toLowerCase()}-500/20 hover:scale-105`}
               >
                 <div className="flex flex-col items-center space-y-4">
                   <div className="w-16 h-16 rounded-xl bg-white/10 p-2 backdrop-blur-sm overflow-hidden border-2 border-black/50">
@@ -266,6 +301,13 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
                       animate={{
                         rotate: [0, 0, 10, -10, 0],
                         scale: [1, 1.1, 1, 0.9, 1],
+                        filter: [
+                          "drop-shadow(0 0 0 transparent)",
+                          "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
+                          "drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))",
+                          "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
+                          "drop-shadow(0 0 0 transparent)",
+                        ]
                       }}
                       transition={{
                         duration: 5 + (index % 3),
@@ -290,9 +332,27 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
           0%,
           100% {
             opacity: 0.3;
+            width: 100%;
           }
           50% {
             opacity: 0.8;
+            width: 95%;
+          }
+        }
+
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0) translateX(0);
+          }
+          25% {
+            transform: translateY(-10px) translateX(5px);
+          }
+          50% {
+            transform: translateY(0) translateX(10px);
+          }
+          75% {
+            transform: translateY(10px) translateX(5px);
           }
         }
       `}</style>

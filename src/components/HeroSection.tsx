@@ -44,21 +44,11 @@ const HeroSection = ({
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 5}s`,
-              opacity: 0.1,
+              opacity: 0.2,
             }}
           >
-            {[
-              "fn",
-              "cls",
-              "ret",
-              "imp",
-              "exp",
-              "try",
-              "null",
-              "<> </>",
-              "===",
-              "&&",
-            ].map((symbol, index) => (
+            {["JS", "TS", "Java", "Git", "AWS",
+              "<> </>", "==", "fn", "src", "dev"].map((symbol, index) => (
               <div
                 key={index}
                 className="text-blue-300 text-opacity-50 text-xl font-mono"

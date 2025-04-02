@@ -24,7 +24,10 @@ export function ExperienceDialog({
 }: ExperienceDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl">
+      <DialogContent
+          className="max-w-3xl max-h-[90vh] overflow-y-auto px-4 sm:px-6"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">
             {experience.role}

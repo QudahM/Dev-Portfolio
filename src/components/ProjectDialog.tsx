@@ -27,7 +27,10 @@ export function ProjectDialog({
 }: ProjectDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl">
+      <DialogContent
+          className="max-w-3xl max-h-[90vh] overflow-y-auto px-4 sm:px-6"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">
             {project.title}
