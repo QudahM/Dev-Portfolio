@@ -159,6 +159,9 @@ const ProjectsSection = ({
             Explore my latest projects and technical work across different
             domains
           </p>
+          <p className="text-gray-300 max-w-2xl mx-auto relative z-10">
+            (Click on any project to view more details)
+          </p>
         </motion.div>
 
         <div className="flex justify-center gap-2 mb-8 relative z-10">

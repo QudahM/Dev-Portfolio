@@ -30,7 +30,7 @@ const ProjectCard = ({
   demoUrl = "https://example.com",
   githubUrl = "https://github.com",
   technologies = ["React", "TypeScript", "Tailwind"],
-  date = "2024",
+  date = "2025",
   onClick,
 }: ProjectCardProps) => {
   return (

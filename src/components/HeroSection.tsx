@@ -19,8 +19,8 @@ interface HeroSectionProps {
 
 const HeroSection = ({
   name = "Mohammad Qudah",
-  title = "Aspiring Software Engineer",
-  bio = "I'm a recent Computer Science graduate with hands-on experience in software development, microservices, and cloud technologies. Passionate about problem-solving and innovation.",
+  title = "Software Engineer",
+  bio = "I'm a recent Computer Science graduate with hands-on experience in software development, microservices, and cloud technologies. Utilizing Java, Python, JavaScript & MongoDB.",
   imageUrl = profileImage,
   socialLinks = {
     github: "https://github.com/QudahM",
