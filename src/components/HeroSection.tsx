@@ -8,6 +8,7 @@ import myResume from "/Mohammad Qudah-Resume.pdf";
 interface HeroSectionProps {
   name?: string;
   title?: string;
+  location?: string;
   bio?: string;
   imageUrl?: string;
   socialLinks?: {
@@ -20,7 +21,8 @@ interface HeroSectionProps {
 const HeroSection = ({
   name = "Mohammad Qudah",
   title = "Software Engineer",
-  bio = "I'm a recent Computer Science graduate with hands-on experience in software development, microservices, and cloud technologies. Utilizing Java, Python, JavaScript & MongoDB.",
+  location = "Toronto, Ontario, Canada",
+  bio = "I am a recent Computer Science graduate with practical experience in software development, microservices architecture, and cloud technologies. My expertise includes utilizing Java, Python, JavaScript, and MongoDB.",
   imageUrl = profileImage,
   socialLinks = {
     github: "https://github.com/QudahM",
@@ -94,6 +96,9 @@ const HeroSection = ({
               <h2 className="text-3xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
                 {title}
               </h2>
+              <h4 className="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+                {location}
+              </h4>
             </motion.div>
           </div>
 

@@ -55,11 +55,11 @@ const defaultProjects: Project[] = [
     category: "Fullstack",
     technologies: ["JavaScript", "React", "HTML/CSS", "Devvit", "Rddit API"],
     features: [
-      "Winner of a prize at the Hack Reddit 2025 Hackathon",
       "Daily-generated puzzle pattern with seed consistency",
       "Redis-backed leaderboard that stores top scores per post",
       "Interactive tile-shifting game built from scratch in JavaScript",
-      "Fully integrated with Reddit's Devvit platform"
+      "Fully integrated with Reddit's Devvit platform",
+      "Participant in the Hack Reddit 2025 Hackathon"
     ],
   },
   {
