@@ -61,10 +61,10 @@ const defaultExperiences: WorkExperience[] = [
       "Refactored React web components for modularity and CI/CD integration, eliminating redundant code, improving extensibility by 60%, and enabling faster feature rollouts and scalable future developments.",
     ],
     responsibilities: [
-      "Lead backend infrastructure refactoring using FastAPI.",
       "Design and implement secure database systems.",
-      "Optimize API performance and data flow.",
+      "Refactoring backend infrastructure using FastAPI.",
       "Maintain code quality and CI/CD pipelines.",
+      "Collaborate in an Agile team.",
     ],
     technologies: ["Python", "FastAPI", "React", "MongoDB", "CI/CD", "Git"],
   },
