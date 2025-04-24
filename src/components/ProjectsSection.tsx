@@ -32,7 +32,7 @@ const defaultProjects: Project[] = [
       "An AI-powered room change request manager that streamlines the process of handling student accommodation changes. Built with modern web technologies and integrated with OpenAI's GPT for intelligent request processing.",
     imageUrl: "/roomImage.png",
     demoUrl: "https://roomchangeai.qudahm.com/",
-    githubUrl: "https://github.com/QudahM/RoomChangeAI",
+    githubUrl: "https://github.com/QudahM/InteriorDecorating",
     category: "AI/Web App",
     technologies: ["TypeScript", "React", "OpenAI", "TailwindCSS", "Vite"],
     features: [

@@ -54,7 +54,7 @@ const defaultExperiences: WorkExperience[] = [
     role: "Software Developer",
     company: "eWorx Technology",
     logo: "assets/logos/eWorx.jpg",
-    duration: "Jan 2023 - May 2023",
+    duration: "Jan 2023 - Aug 2023",
     description: [
       "Led the complete refactor for the server-side infrastructure, redesigning API architecture to FastAPI, reducing query latency by 70%, cutting response time by 50% and optimizing data flow for scalable performance.",
       "Engineered a secure database system incorporating SQL injection prevention and streamlined data generation algorithms, improving processing speed by 67% while enhancing user experience and system reliability.",
