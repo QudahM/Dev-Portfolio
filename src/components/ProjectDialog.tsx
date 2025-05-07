@@ -53,9 +53,8 @@ export function ProjectDialog({
             <img
               src={project.imageUrls[currentImage]}
               alt={`${project.title} - Slide ${currentImage + 1}`}
-              className="mx-auto max-h-[400px] w-auto object-contain translate-y-[-10%] transition-transform duration-500"
+              className="w-full h-full object-contain border border-black bg-white rounded-md"
             />
-
             {/* Carousel controls */}
             {project.imageUrls.length > 1 && (
               <>

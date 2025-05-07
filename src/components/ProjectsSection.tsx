@@ -67,7 +67,7 @@ const defaultProjects: Project[] = [
     title: "Pixel Shift Daily Puzzle",
     description:
       "A daily color-matching puzzle game built with Devvit and Reddit WebViews. Players rearrange tiles to match a randomly generated pattern using the fewest moves possible. Features leaderboard integration and smooth UI animations.",
-    imageUrls: ["/assets/projects/redditHackathon.png"],
+    imageUrls: ["/assets/projects/redditHackathon.png", "/assets/projects/redditHackathonDashboard.png"],
     demoUrl: "https://www.reddit.com/r/Pixel0Shift/comments/1jjet6q/pixel_shift_daily_puzzle_can_you_beat_todays/",
     githubUrl: "https://github.com/QudahM/pixel-shift",
     category: "Fullstack",
