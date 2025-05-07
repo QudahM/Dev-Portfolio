@@ -27,7 +27,7 @@ const defaultExperiences: WorkExperience[] = [
     role: "Software Engineer Intern",
     company: "Sun Life Financial",
     logo: "assets/logos/sunlife.png",
-    duration: "May 2023 - Dec 2023",
+    duration: "Aug 2023 - Dec 2023",
     description: [
       "Developed a scalable microservice pipeline to process 10,000+ data files daily, leveraging Apache Kafka to enhance data streaming and JSON processing, reducing data streaming latency by 15%.",
       "Implemented Kafka Stream processing functions and generated unit tests for Java microservices, increasing test coverage and reducing production errors by 8%.",

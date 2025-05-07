@@ -1,11 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
-  CardHeader,
-  CardTitle,
 } from "./ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, ArrowRight, Calendar } from "lucide-react";
@@ -15,7 +12,7 @@ import { motion } from "framer-motion";
 interface ProjectCardProps {
   title?: string;
   description?: string;
-  imageUrl?: string;
+  imageUrls?: string[];
   demoUrl?: string;
   githubUrl?: string;
   technologies?: string[];
@@ -26,7 +23,7 @@ interface ProjectCardProps {
 const ProjectCard = ({
   title = "Project Title",
   description = "A brief description of the project and its key features. This showcases the main functionality and purpose of the project.",
-  imageUrl = "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+  imageUrls = ["https://images.unsplash.com/photo-1517694712202-14dd9538aa97"],
   demoUrl = "https://example.com",
   githubUrl = "https://github.com",
   technologies = ["React", "TypeScript", "Tailwind"],
@@ -42,9 +39,9 @@ const ProjectCard = ({
       <div className="relative h-[260px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent z-10" />
         <img
-          src={imageUrl}
+          src={imageUrls[0]}
           alt={title}
-          className="w-full h-full object-cover"
+              className="mx-auto max-h-[300px] w-auto object-contain transition-transform duration-500"
         />
 
         {/* Overlay Content */}
@@ -83,7 +80,7 @@ const ProjectCard = ({
         </div>
       </div>
 
-      {/* Content Section */}
+      {/* Description & Tech Stack */}
       <div className="flex-grow p-6 space-y-4">
         <CardDescription className="text-base text-gray-300 line-clamp-3">
           {description}

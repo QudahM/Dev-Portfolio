@@ -3,13 +3,12 @@ import ProjectCard from "./ProjectCard";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ProjectDialog } from "./ProjectDialog";
-import discord from "/tartarus-bot.jpg";
 
 interface Project {
   id: number;
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrls: string[];
   demoUrl: string;
   githubUrl: string;
   technologies: string[];
@@ -26,11 +25,30 @@ interface ProjectsSectionProps {
 const defaultProjects: Project[] = [
   {
     id: 1,
+    date: "2025",
+    title: "GrantBridge",
+    description:
+      "GrantBridge is a smart scholarship and grant discovery platform that uses Sonar AI to find the best opportunities, simplify eligibility, and assist with applications, aiming to make funding more accessible for students and creatives.",
+    imageUrls: ["/assets/projects/Grantbridge_homepage.png", "/assets/projects/Grantbridge_mainpage.png"],
+    demoUrl: "https://grantbridge.online/",
+    githubUrl: "https://github.com/QudahM/GrantBridge",
+    category: "AI/Web App",
+    technologies: ["React", "TypeScript", "Express.js", "Perplexity API", "AWS"],
+    features: [
+      "AI-powered grant/scholarships discovery based on user profile",
+      "Converts complex eligibility criteria into plain, digestible language",
+      "Offers AI-generated prompts to help users write application answers",
+      "Summarizes requirement sections into concise, user-friendly bullet points",
+      "Tracks application progress with a checklist to keep users organized",
+    ],
+  },
+  {
+    id: 2,
     date: "2024",
     title: "Room Change AI",
     description:
       "An AI-powered room change request manager that streamlines the process of handling student accommodation changes. Built with modern web technologies and integrated with OpenAI's GPT for intelligent request processing.",
-    imageUrl: "/roomImage.png",
+    imageUrls: ["/assets/projects/roomImage.png", "/assets/projects/roomDesign.png"],
     demoUrl: "https://roomchangeai.qudahm.com/",
     githubUrl: "https://github.com/QudahM/InteriorDecorating",
     category: "AI/Web App",
@@ -44,12 +62,12 @@ const defaultProjects: Project[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     date: "2025",
     title: "Pixel Shift Daily Puzzle",
     description:
       "A daily color-matching puzzle game built with Devvit and Reddit WebViews. Players rearrange tiles to match a randomly generated pattern using the fewest moves possible. Features leaderboard integration and smooth UI animations.",
-    imageUrl: "/redditHackathon.png",
+    imageUrls: ["/assets/projects/redditHackathon.png"],
     demoUrl: "https://www.reddit.com/r/Pixel0Shift/comments/1jjet6q/pixel_shift_daily_puzzle_can_you_beat_todays/",
     githubUrl: "https://github.com/QudahM/pixel-shift",
     category: "Fullstack",
@@ -63,12 +81,12 @@ const defaultProjects: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     date: "2025",
     title: "Tartarus Discord Bot",
     description:
       "A feature-rich Discord bot built with Python, offering moderation tools, custom commands, and automated tasks for server management. Handles moderation for 2,000+ users efficiently.",
-    imageUrl: discord,
+    imageUrls: ["/assets/projects/tartarus-bot.jpg"],
     demoUrl: "https://github.com/QudahM/TartarusBot",
     githubUrl: "https://github.com/QudahM/TartarusBot",
     category: "Bot",
@@ -82,12 +100,12 @@ const defaultProjects: Project[] = [
     ],
   },
    /*{
-    id: 4,
+    id: 5,
     date: "2024",
     title: "Valentine Project",
     description:
       "An interactive Valentine's Day web application featuring engaging animations and a playful user interface. Created with React and modern animation libraries for a delightful user experience.",
-    imageUrl: "https://images.unsplash.com/photo-1518199266791-5375a83190b7",
+    imageUrls: ["https://images.unsplash.com/photo-1518199266791-5375a83190b7"],
     demoUrl: "https://valentine-project.vercel.app",
     githubUrl: "https://github.com/QudahM/valentine-project",
     category: "Frontend",
@@ -193,7 +211,7 @@ const ProjectsSection = ({
               <ProjectCard
                 title={project.title}
                 description={project.description}
-                imageUrl={project.imageUrl}
+                imageUrls={project.imageUrls}
                 demoUrl={project.demoUrl}
                 githubUrl={project.githubUrl}
                 technologies={project.technologies}

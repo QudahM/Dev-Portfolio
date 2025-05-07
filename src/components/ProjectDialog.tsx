@@ -1,22 +1,23 @@
+import React, { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Badge } from "./ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Calendar, CheckCircle2 } from "lucide-react";
 
 interface ProjectDialogProps {
-  isOpen: boolean;
-  onClose: () => void;
-  project: {
-    title: string;
-    description: string;
-    imageUrl: string;
-    demoUrl: string;
-    githubUrl: string;
-    technologies: string[];
-    category: string;
-    features?: string[];
-    challenges?: string[];
-    date?: string;
+  readonly isOpen: boolean;
+  readonly onClose: () => void;
+  readonly project: {
+    readonly title: string;
+    readonly description: string;
+    readonly imageUrls: readonly string[];
+    readonly demoUrl: string;
+    readonly githubUrl: string;
+    readonly technologies: readonly string[];
+    readonly category: string;
+    readonly features?: readonly string[];
+    readonly challenges?: readonly string[];
+    readonly date?: string;
   };
 }
 
@@ -25,25 +26,57 @@ export function ProjectDialog({
   onClose,
   project,
 }: ProjectDialogProps) {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = () =>
+    setCurrentImage((prev) => (prev + 1) % project.imageUrls.length);
+  const prevImage = () =>
+    setCurrentImage((prev) =>
+      prev === 0 ? project.imageUrls.length - 1 : prev - 1
+    );
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
-          className="max-w-3xl max-h-[90vh] overflow-y-auto px-4 sm:px-6"
-          style={{ WebkitOverflowScrolling: "touch" }}
-        >
+        className="max-w-3xl max-h-[90vh] overflow-y-auto px-4 sm:px-6"
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">
             {project.title}
           </DialogTitle>
         </DialogHeader>
+
         <div className="mt-4 space-y-6">
-          {/* Project Image */}
+          {/* Carousel Image Section */}
           <div className="relative h-[300px] rounded-lg overflow-hidden group">
             <img
-              src={project.imageUrl}
-              alt={project.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src={project.imageUrls[currentImage]}
+              alt={`${project.title} - Slide ${currentImage + 1}`}
+              className="mx-auto max-h-[400px] w-auto object-contain translate-y-[-10%] transition-transform duration-500"
             />
+
+            {/* Carousel controls */}
+            {project.imageUrls.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevImage();
+                  }}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 text-white w-8 h-8 flex items-center justify-center rounded-full z-20">
+                  ‹
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextImage();
+                  }}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 text-white w-8 h-8 flex items-center justify-center rounded-full z-20">
+                  ›
+                </button>
+              </>
+            )}
           </div>
 
           {/* Project Info */}
