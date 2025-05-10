@@ -12,7 +12,7 @@ interface Project {
   demoUrl: string;
   githubUrl: string;
   technologies: string[];
-  category: string;
+  categories: string[];
   features?: string[];
   challenges?: string[];
   date?: string;
@@ -32,7 +32,7 @@ const defaultProjects: Project[] = [
     imageUrls: ["/assets/projects/Grantbridge_homepage.png", "/assets/projects/Grantbridge_mainpage.png"],
     demoUrl: "https://grantbridge.online/",
     githubUrl: "https://github.com/QudahM/GrantBridge",
-    category: "AI/Web App",
+    categories: ["Fullstack", "API", "Cloud Hosted"],
     technologies: ["React", "TypeScript", "Express.js", "Perplexity API", "AWS"],
     features: [
       "AI-powered grant/scholarships discovery based on user profile",
@@ -51,8 +51,8 @@ const defaultProjects: Project[] = [
     imageUrls: ["/assets/projects/roomImage.png", "/assets/projects/roomDesign.png"],
     demoUrl: "https://roomchangeai.qudahm.com/",
     githubUrl: "https://github.com/QudahM/InteriorDecorating",
-    category: "AI/Web App",
-    technologies: ["TypeScript", "React", "OpenAI", "TailwindCSS", "Vite"],
+    categories: ["Fullstack", "API", "Cloud Hosted"],
+    technologies: ["TypeScript", "React", "Next.js", "OpenAI API", "AWS"],
     features: [
       "AI-powered request analysis and processing",
       "Smart room matching algorithm",
@@ -70,7 +70,7 @@ const defaultProjects: Project[] = [
     imageUrls: ["/assets/projects/redditHackathon.png", "/assets/projects/redditHackathonDashboard.png"],
     demoUrl: "https://www.reddit.com/r/Pixel0Shift/comments/1jjet6q/pixel_shift_daily_puzzle_can_you_beat_todays/",
     githubUrl: "https://github.com/QudahM/pixel-shift",
-    category: "Fullstack",
+    categories: ["Frontend", "API", "Cloud Hosted"],
     technologies: ["JavaScript", "React", "HTML/CSS", "Devvit", "Rddit API"],
     features: [
       "Daily-generated puzzle pattern with seed consistency",
@@ -89,7 +89,7 @@ const defaultProjects: Project[] = [
     imageUrls: ["/assets/projects/tartarus-bot.jpg"],
     demoUrl: "https://github.com/QudahM/TartarusBot",
     githubUrl: "https://github.com/QudahM/TartarusBot",
-    category: "Bot",
+    categories: ["Backend", "API", "Cloud Hosted", "Database"],
     technologies: ["Python", "MongoDB", "AWS", "Docker", "Discord API"],
     features: [
       "Advanced moderation commands",
@@ -101,14 +101,14 @@ const defaultProjects: Project[] = [
   },
    /*{
     id: 5,
-    date: "2024",
+    date: "2025",
     title: "Valentine Project",
     description:
       "An interactive Valentine's Day web application featuring engaging animations and a playful user interface. Created with React and modern animation libraries for a delightful user experience.",
     imageUrls: ["https://images.unsplash.com/photo-1518199266791-5375a83190b7"],
     demoUrl: "https://valentine-project.vercel.app",
     githubUrl: "https://github.com/QudahM/valentine-project",
-    category: "Frontend",
+    categories: ["Backend", "API", "Database", "Cloud Hosted"],
     technologies: ["React", "JavaScript", "VITE", "TailWindCSS", "AWS"],
     features: [
       "Interactive animations and transitions",
@@ -128,13 +128,13 @@ const ProjectsSection = ({
 
   const categories = [
     "All",
-    ...new Set(projects.map((project) => project.category)),
+    ...Array.from(new Set(projects.flatMap((project) => project.categories))),
   ];
 
   const filteredProjects =
     selectedCategory === "All"
       ? projects
-      : projects.filter((project) => project.category === selectedCategory);
+      : projects.filter((project) => project.categories.includes(selectedCategory));
 
   return (
     <section className="py-16 px-4 bg-gray-900 relative overflow-hidden">
@@ -182,7 +182,7 @@ const ProjectsSection = ({
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-2 mb-8 relative z-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 relative z-10">
           {categories.map((category) => (
             <Button
               key={category}
@@ -225,7 +225,10 @@ const ProjectsSection = ({
           <ProjectDialog
             isOpen={!!selectedProject}
             onClose={() => setSelectedProject(null)}
-            project={selectedProject}
+            project={{
+              ...selectedProject,
+              category: selectedProject.categories[0] || "Uncategorized"
+            }}
           />
         )}
       </div>
