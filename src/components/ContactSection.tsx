@@ -263,12 +263,12 @@ const ContactSection = ({
                 <motion.div className="space-y-6" variants={containerVariants}>
                   <motion.a
                     href={`mailto:${email}`}
-                    className="flex items-center space-x-4 text-gray-600 hover:text-red-400 transition-colors p-3 rounded-lg hover:bg-red-50 group"
+                    className="flex items-center space-x-4 text-gray-600 hover:text-red-400 transition-colors p-3 rounded-lg hover:bg-red-100 group"
                     variants={itemVariants}
                     whileHover="hover"
                   >
                     <motion.div
-                      className="bg-red-50 p-2 rounded-full text-red-400"
+                      className="bg-red-100 p-2 rounded-full text-red-400"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                     >
                       <Mail className="w-6 h-6" />
@@ -281,12 +281,12 @@ const ContactSection = ({
                     href={github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-4 text-gray-600 hover:text-gray-900 transition-colors p-3 rounded-lg hover:bg-gray-200 group"
+                    className="flex items-center space-x-4 text-gray-600 hover:text-gray-900 transition-colors p-3 rounded-lg hover:bg-gray-300 group"
                     variants={itemVariants}
                     whileHover="hover"
                   >
                     <motion.div
-                      className="bg-gray-200 p-2 rounded-full text-gray-700"
+                      className="bg-gray-300 p-2 rounded-full text-gray-700"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                     >
                       <Github className="w-6 h-6" />
