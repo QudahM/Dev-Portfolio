@@ -22,7 +22,7 @@ const HeroSection = ({
   name = "Mohammad Qudah",
   title = "Software Engineer",
   location = "Toronto, Ontario, Canada",
-  bio = "I am a recent Computer Science graduate with practical experience in software development, microservices architecture, and cloud technologies. My expertise includes utilizing Java, Python, JavaScript, and MongoDB.",
+  bio = "I am a recent Computer Science graduate with experience in software development, microservices architecture, and server side development. My expertise includes utilizing Java, Python, TypeScript, and More.",
   imageUrl = profileImage,
   socialLinks = {
     github: "https://github.com/QudahM",
