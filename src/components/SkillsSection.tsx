@@ -39,19 +39,18 @@ const defaultSkills: Skill[] = [
     ],
     experience: ["Django", "FastAPI", "NumPy", "Pandas"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-green-500/10",
+      "hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-green-400/10",
   },
   {
-    name: "JavaScript",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    name: "Go",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
     description: [
       "**Experience:**",
-      "• Refactored React web components for modularity and CI/CD integration",
-      "• Developed a task management solution using JavaScript, React, and Node.js, ensuring real-time synchronization",
+      "• Developed a real-time data processing pipeline using Go and Apache Kafka",
     ],
-    experience: ["ES6+", "Async/Await", "DOM", "Webpack"],
+    experience: ["Goroutines"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-yellow-500/10 hover:to-amber-500/10",
+      "hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-teal-300/10",
   },
   {
     name: "TypeScript",
@@ -66,16 +65,64 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-blue-700/10 hover:to-sky-400/10",
   },
   {
-    name: "MongoDB",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    name: "JavaScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     description: [
       "**Experience:**",
-      "• Designed and optimized MongoDB schemas for various applications",
-      "• Implemented data aggregation pipelines and indexing strategies",
+      "• Refactored React web components for modularity and CI/CD integration",
+      "• Developed a task management solution using JavaScript, React, and Node.js, ensuring real-time synchronization",
     ],
-    experience: ["Mongoose", "Atlas", "Aggregation", "Indexing", "Replication"],
+    experience: ["ES6+", "Async/Await", "DOM", "Webpack"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-green-700/10 hover:to-green-400/10",
+      "hover:bg-gradient-to-r hover:from-yellow-300/10 hover:to-amber-600/10",
+  },
+  {
+    name: "React",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    description: [
+      "**Experience:**",
+      "• Developed React-based user interfaces for task management and HR systems, enhancing responsiveness",
+      "• Built reusable component libraries and implemented state management solutions",
+    ],
+    experience: ["Hooks", "Next.js", "React Query", "Testing"],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-cyan-400/10 hover:to-blue-600/10",
+  },
+  {
+    name: "Node JS",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    description: [
+      "**Experience:**",
+      "• Built scalable backend services using Node.js and Express",
+      "• Implemented real-time features using WebSocket and GraphQL",
+    ],
+    experience: [
+      "Express",
+      "REST APIs",
+      "GraphQL",
+      "WebSocket",
+      "Microservices",
+    ],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-lime-500/10 hover:to-emerald-500/10",
+  },
+  {
+    name: "Next JS",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    description: [
+      "**Experience:**",
+      "• Implemented responsive UIs with HTML5 for React and FastAPI applications, improving user",
+      "• Utilized HTML5 to implement many features like a new pop-up page for rotating documents",
+    ],
+    experience: [
+      "Semantic Elements",
+      "Forms",
+      "Canvas",
+      "Audio/Video",
+      "Web Components",
+    ],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-stone-700/10 hover:to-slate-800/10",
   },
   {
     name: "Express JS",
@@ -96,36 +143,6 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-gray-800/10 hover:to-gray-100/10",
   },
   {
-    name: "React",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    description: [
-      "**Experience:**",
-      "• Developed React-based user interfaces for task management and HR systems, enhancing responsiveness",
-      "• Built reusable component libraries and implemented state management solutions",
-    ],
-    experience: ["Hooks", "Next.js", "React Query", "Testing"],
-    gradient:
-      "hover:bg-gradient-to-r hover:from-cyan-400/10 hover:to-blue-600/10",
-  },
-  {
-    name: "Node.js",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-    description: [
-      "**Experience:**",
-      "• Built scalable backend services using Node.js and Express",
-      "• Implemented real-time features using WebSocket and GraphQL",
-    ],
-    experience: [
-      "Express",
-      "REST APIs",
-      "GraphQL",
-      "WebSocket",
-      "Microservices",
-    ],
-    gradient:
-      "hover:bg-gradient-to-r hover:from-green-500/10 hover:to-emerald-500/10",
-  },
-  {
     name: "Tailwind CSS",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
     description: [
@@ -136,6 +153,18 @@ const defaultSkills: Skill[] = [
     experience: ["Flexbox", "Grid", "Animations", "Tailwind", "SASS"],
     gradient:
       "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-blue-600/10",
+  },
+  {
+    name: "MongoDB",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    description: [
+      "**Experience:**",
+      "• Designed and optimized MongoDB schemas for various applications",
+      "• Implemented data aggregation pipelines and indexing strategies",
+    ],
+    experience: ["Mongoose", "Atlas", "Aggregation", "Indexing", "Replication"],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-green-700/10 hover:to-green-400/10",
   },
   {
     name: "AWS",
@@ -159,7 +188,19 @@ const defaultSkills: Skill[] = [
     ],
     experience: ["Containers", "Compose", "Kubernetes", "CI/CD", "Monitoring"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-indigo-500/10",
+      "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-sky-500/10",
+  },
+  {
+    name: "Kubernetes",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+    description: [
+      "**Experience:**",
+      "• Deployed and managed containerized applications using Kubernetes",
+      "• Implemented CI/CD pipelines for automated deployment and scaling",
+    ],
+    experience: ["Helm", "Ingress", "Monitoring", "Scaling", "Networking"],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-blue-900/10 hover:to-indigo-700/10",
   },
   {
     name: "Git",
@@ -185,16 +226,6 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const floatingAnimation = {
-    y: [0, -10, 0, 10, 0],
-    x: [0, 10, 0, -10, 0],
-    transition: {
-      duration: 10,
-      repeat: Infinity,
-      repeatType: "loop" as const,
-    },
-  };
-
   const getCustomAnimation = (index: number) => ({
     y: [0, -15 * ((index % 3) + 1), 0, 15 * ((index % 3) + 1), 0],
     x: [0, 15 * ((index % 4) - 1.5), 0, -15 * ((index % 4) - 1.5), 0],
@@ -217,10 +248,8 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
 
   return (
     <section className="py-20 bg-gray-900 relative overflow-hidden">
-      {/* Grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-      {/* Animated circuit lines */}
       <div className="absolute inset-0">
         {[...Array(8)].map((_, i) => (
           <div
@@ -236,31 +265,31 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
           />
         ))}
         {[...Array(10)].map(() => {
-        const uniqueKey = `particle-${Math.random()}`;
-        return (
-          <motion.div
-            key={uniqueKey}
-            className="absolute w-1 h-1 rounded-full bg-blue-400/30"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, Math.random() * 100 - 50],
-              x: [0, Math.random() * 100 - 50],
-              opacity: [0, 0.8, 0],
-              scale: [0, 1.5, 0],
-            }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-              delay: Math.random() * 2, // Randomized delay
-            }}
-          />
-        );
-      })}
+          const uniqueKey = `particle-${Math.random()}`;
+          return (
+            <motion.div
+              key={uniqueKey}
+              className="absolute w-1 h-1 rounded-full bg-blue-400/30"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, Math.random() * 100 - 50],
+                x: [0, Math.random() * 100 - 50],
+                opacity: [0, 0.8, 0],
+                scale: [0, 1.5, 0],
+              }}
+              transition={{
+                duration: 5 + Math.random() * 5,
+                repeat: Infinity,
+                repeatType: "loop",
+                ease: "easeInOut",
+                delay: Math.random() * 2,
+              }}
+            />
+          );
+        })}
       </div>
 
       <div className="container mx-auto px-4" ref={containerRef}>
@@ -278,53 +307,53 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
           {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              ref={(el) => (skillsRef.current[index] = el)}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              animate={getCustomAnimation(index)}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-            >
-              <Card
-                className={`p-6 transition-all duration-300 cursor-pointer bg-white/5 backdrop-blur-sm border-white/10 
-                ${skill.gradient} hover:shadow-lg hover:shadow-${skill.name.toLowerCase()}-500/20 hover:scale-105`}
-              >
-                <div className="flex flex-col items-center space-y-4">
-                  <div className="w-16 h-16 rounded-xl bg-white/10 p-2 backdrop-blur-sm overflow-hidden border-2 border-black/50">
-                    <motion.img
-                      src={skill.icon}
-                      alt={skill.name}
-                      className="w-full h-full object-contain"
-                      animate={{
-                        rotate: [0, 0, 10, -10, 0],
-                        scale: [1, 1.1, 1, 0.9, 1],
-                        filter: [
-                          "drop-shadow(0 0 0 transparent)",
-                          "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
-                          "drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))",
-                          "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
-                          "drop-shadow(0 0 0 transparent)",
-                        ]
-                      }}
-                      transition={{
-                        duration: 5 + (index % 3),
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        ease: "easeInOut",
-                      }}
-                    />
-                  </div>
-                  <h3 className="font-medium text-lg text-center text-white">
-                    {skill.name}
-                  </h3>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+                <motion.div
+                  key={skill.name}
+                  ref={(el) => (skillsRef.current[index] = el)}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  animate={getCustomAnimation(index)}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <Card
+                    className={`p-6 transition-all duration-300 cursor-pointer bg-white/5 backdrop-blur-sm border-white/10 
+                    ${skill.gradient} hover:shadow-lg hover:shadow-${skill.name.toLowerCase()}-500/20 hover:scale-105`}
+                  >
+                    <div className="flex flex-col items-center space-y-4">
+                      <div className="w-16 h-16 rounded-xl bg-white/10 p-2 backdrop-blur-sm overflow-hidden border-2 border-black/50">
+                        <motion.img
+                          src={skill.icon}
+                          alt={skill.name}
+                          className="w-full h-full object-contain"
+                          animate={{
+                            rotate: [0, 0, 10, -10, 0],
+                            scale: [1, 1.1, 1, 0.9, 1],
+                            filter: [
+                              "drop-shadow(0 0 0 transparent)",
+                              "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
+                              "drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))",
+                              "drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
+                              "drop-shadow(0 0 0 transparent)",
+                            ]
+                          }}
+                          transition={{
+                            duration: 5 + (index % 3),
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut",
+                          }}
+                        />
+                      </div>
+                      <h3 className="font-medium text-lg text-center text-white">
+                        {skill.name}
+                      </h3>
+                    </div>
+                  </Card>
+                </motion.div>
+                ))}
+            </div>
       </div>
 
       <style>{`

@@ -40,13 +40,7 @@ const defaultExperiences: WorkExperience[] = [
       "Write comprehensive unit tests and documentation.",
       "Collaborate in Agile sprints, refining code and development with colleagues.",
     ],
-    technologies: [
-      "Java",
-      "Spring Boot",
-      "Apache Kafka",
-      "MongoDB",
-      "Docker",
-      "Jenkins",
+    technologies: ["Java", "Spring Boot", "Apache Kafka", "Kubernetes", "MongoDB", "Docker", "Jenkins",
     ],
   },
   {
@@ -66,7 +60,7 @@ const defaultExperiences: WorkExperience[] = [
       "Maintain code quality and CI/CD pipelines.",
       "Collaborate in an Agile team.",
     ],
-    technologies: ["Python", "FastAPI", "React", "MongoDB", "CI/CD", "Git"],
+    technologies: ["Python", "FastAPI", "React", "JSON", "MongoDB", "CI/CD", "Git"],
   },
   {
     id: 3,
