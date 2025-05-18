@@ -29,7 +29,7 @@ const defaultProjects: Project[] = [
     title: "GrantBridge",
     description:
       "GrantBridge is a smart scholarship and grant discovery platform that uses Sonar AI to find the best opportunities, simplify eligibility, and assist with applications, aiming to make funding more accessible for students and creatives.",
-    imageUrls: ["/assets/projects/Grantbridge_homepage.png", "/assets/projects/Grantbridge_mainpage.png"],
+    imageUrls: ["/assets/projects/Grantbridge_homepage.png", "/assets/projects/Grantbridge_mainpageDM.png", "/assets/projects/Grantbridge_applicationAssistant.png"],
     demoUrl: "https://grantbridge.online/",
     githubUrl: "https://github.com/QudahM/GrantBridge",
     categories: ["Fullstack", "API", "Cloud Hosted"],
