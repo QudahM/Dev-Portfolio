@@ -77,6 +77,18 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-yellow-300/10 hover:to-amber-600/10",
   },
   {
+    name: "Spring Boot",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
+    description: [
+      "**Experience:**",
+      "• Deployed and managed containerized applications using Kubernetes",
+      "• Implemented CI/CD pipelines for automated deployment and scaling",
+    ],
+    experience: ["Helm", "Ingress", "Monitoring", "Scaling", "Networking"],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-green-700/10 hover:to-lime-600/10",
+  },
+  {
     name: "React",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     description: [
@@ -143,18 +155,6 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-gray-800/10 hover:to-gray-100/10",
   },
   {
-    name: "Tailwind CSS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-    description: [
-      "**Experience:**",
-      "• Created responsive web designs using modern CSS techniques like Flexbox and Grid.",
-      "• Enhanced user experience by implementing CSS animations and transitions for smooth UI interactions.",
-    ],
-    experience: ["Flexbox", "Grid", "Animations", "Tailwind", "SASS"],
-    gradient:
-      "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-blue-600/10",
-  },
-  {
     name: "MongoDB",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
     description: [
@@ -191,18 +191,6 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-sky-500/10",
   },
   {
-    name: "Kubernetes",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
-    description: [
-      "**Experience:**",
-      "• Deployed and managed containerized applications using Kubernetes",
-      "• Implemented CI/CD pipelines for automated deployment and scaling",
-    ],
-    experience: ["Helm", "Ingress", "Monitoring", "Scaling", "Networking"],
-    gradient:
-      "hover:bg-gradient-to-r hover:from-blue-900/10 hover:to-indigo-700/10",
-  },
-  {
     name: "Git",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
     description: [
@@ -219,6 +207,18 @@ const defaultSkills: Skill[] = [
     ],
     gradient:
       "hover:bg-gradient-to-r hover:from-orange-500/10 hover:to-red-400/10",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+    description: [
+      "**Experience:**",
+      "• Created responsive web designs using modern CSS techniques like Flexbox and Grid.",
+      "• Enhanced user experience by implementing CSS animations and transitions for smooth UI interactions.",
+    ],
+    experience: ["Flexbox", "Grid", "Animations", "Tailwind", "SASS"],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-blue-600/10",
   },
 ];
 
