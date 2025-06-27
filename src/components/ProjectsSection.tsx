@@ -52,7 +52,7 @@ const defaultProjects: Project[] = [
     demoUrl: "https://roomchangeai.qudahm.com/",
     githubUrl: "https://github.com/QudahM/InteriorDecorating",
     categories: ["Fullstack", "API", "Cloud Hosted"],
-    technologies: ["TypeScript", "React", "Next.js", "OpenAI API", "AWS"],
+    technologies: ["React", "TypeScript", "Next.js", "OpenAI API", "AWS"],
     features: [
       "AI-powered request analysis and processing",
       "Smart room matching algorithm",

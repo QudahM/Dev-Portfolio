@@ -22,7 +22,7 @@ const HeroSection = ({
   name = "Mohammad Qudah",
   title = "Software Engineer",
   location = "Toronto, Ontario, Canada",
-  bio = "I am a recent Computer Science graduate with experience in software development, microservices architecture, and server side development. My expertise includes utilizing Java, Python, TypeScript, and More.",
+  bio = "I am a Computer Science graduate with experience in server-side and distributed systems development, with proficiency in microservices architecture. My expertise includes utilizing Java, Python, TypeScript, and More.",
   imageUrl = profileImage,
   socialLinks = {
     github: "https://github.com/QudahM",
@@ -49,11 +49,11 @@ const HeroSection = ({
               opacity: 0.2,
             }}
           >
-            {["JS", "TS", "Java", "Git", "AWS",
+            {["JS", "TS", "Java", "Git", "AWS", "GO", "API",
               "<> </>", "==", "fn", "src", "dev"].map((symbol, index) => (
               <div
                 key={index}
-                className="text-blue-300 text-opacity-50 text-xl font-mono"
+                className="text-purple-200 text-opacity-50 text-xl font-mono"
                 style={{
                   transform: `rotate(${Math.random() * 360}deg)`,
                   position: "absolute",
@@ -111,27 +111,6 @@ const HeroSection = ({
           >
             <p className="text-xl text-gray-300 leading-relaxed">{bio}</p>
           </motion.div>
-
-          {/* CTA Buttons 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-wrap gap-4"
-          >
-            <Button size="lg" className="bg-blue-500 hover:bg-blue-600" asChild>
-              <a href="#contact">Get in Touch</a>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-white border-white/20 hover:bg-white/10"
-              asChild
-            >
-              <a href="#projects">View Projects</a>
-            </Button>
-          </motion.div>
-          */}
 
           {/* Social Links */}
           <motion.div
@@ -197,7 +176,7 @@ const HeroSection = ({
         >
           <div
             className="aspect-square rounded-full overflow-hidden border-4 border-white/10 shadow-xl max-w-md mx-auto relative z-10"
-            style={{ width: "550px", height: "600px" }}
+            style={{ width: "600px", height: "600px" }}
           >
             <img
               src={imageUrl}
