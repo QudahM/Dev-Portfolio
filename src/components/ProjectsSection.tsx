@@ -83,6 +83,25 @@ const defaultProjects: Project[] = [
   {
     id: 4,
     date: "2025",
+    title: "QR Nexus",
+    description:
+      "A QR code generation and analytics platform, where you can verify the safety of QR codes. Create beautiful, trackable QR codes with real-time analytics, security verification, and advanced customization options.",
+    imageUrls: ["/assets/projects/qrnexus_homepage.png", "/assets/projects/qrnexus_verifypage.png", "/assets/projects/qrnexus_generatepage.png"],
+    demoUrl: "https://qrnexus.site/",
+    githubUrl: "https://github.com/QudahM/QR-Verify",
+    categories: ["Fullstack", "API", "Cloud Hosted", "Database"],
+    technologies: ["TypeScript", "React", "PostgreSQL", "Vite", "Google Safe Browsing API"],
+    features: [
+      "Instant QR code generation with real-time updates",
+      "Advanced design customization: gradients, logos, shapes",
+      "Security verification using Google Safe Browsing API",
+      "Detailed analytics dashboard with scan tracking and visualizations",
+      "Fully responsive UI with dark/light mode and smooth transitions"
+    ],
+  },
+  {
+    id: 5,
+    date: "2025",
     title: "Tartarus Discord Bot",
     description:
       "A feature-rich Discord bot built with Python, offering moderation tools, custom commands, and automated tasks for server management. Handles moderation for 2,000+ users efficiently.",
@@ -100,7 +119,7 @@ const defaultProjects: Project[] = [
     ],
   },
    /*{
-    id: 5,
+    id: 6,
     date: "2025",
     title: "Valentine Project",
     description:
