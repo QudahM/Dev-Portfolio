@@ -32,7 +32,7 @@ const defaultProjects: Project[] = [
     imageUrls: ["/assets/projects/Grantbridge_homepage.png", "/assets/projects/Grantbridge_mainpageDM.png", "/assets/projects/Grantbridge_applicationAssistant.png"],
     demoUrl: "https://grantbridge.online/",
     githubUrl: "https://github.com/QudahM/GrantBridge",
-    categories: ["Fullstack", "API", "Cloud Hosted"],
+    categories: ["Fullstack", "API", "Cloud Hosted", "Backend"],
     technologies: ["React", "TypeScript", "Express.js", "Perplexity API", "AWS"],
     features: [
       "AI-powered grant/scholarships discovery based on user profile",
@@ -44,6 +44,25 @@ const defaultProjects: Project[] = [
   },
   {
     id: 2,
+    date: "2025",
+    title: "Collaborative Canvas",
+    description:
+      "A real-time collaborative whiteboard app. Supports simultaneous drawing, team chat, and user presence tracking via WebSockets. Designed for seamless remote brainstorming and team ideation.",
+    imageUrls: ["/assets/projects/canvas_mainpage.png", "/assets/projects/canvas_mainpageww.png"],
+    demoUrl: "https://collaborative-canvas-25764.firebaseapp.com/",
+    githubUrl: "https://github.com/QudahM/Collaborative-Canvas",
+    categories: ["Fullstack", "API", "Cloud Hosted", "Backend"],
+    technologies: ["Go", "React", "TypeScript", "Google Cloud Platform", "Docker"],
+    features: [
+      "Real-time collaborative drawing canvas",
+      "Live user presence tracking",
+      "WebSocket-based backend with Go",
+      "Integrated team chat for collaboration",
+      "Dockerized architecture for frontend and backend",
+    ],
+  },
+  {
+    id: 3,
     date: "2024",
     title: "Room Change AI",
     description:
@@ -62,7 +81,7 @@ const defaultProjects: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     date: "2025",
     title: "Pixel Shift Daily Puzzle",
     description:
@@ -81,7 +100,7 @@ const defaultProjects: Project[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     date: "2025",
     title: "QR Nexus",
     description:
@@ -100,7 +119,7 @@ const defaultProjects: Project[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     date: "2025",
     title: "Tartarus Discord Bot",
     description:
@@ -119,7 +138,7 @@ const defaultProjects: Project[] = [
     ],
   },
    /*{
-    id: 6,
+    id: 7,
     date: "2025",
     title: "Valentine Project",
     description:
