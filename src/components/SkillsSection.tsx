@@ -39,7 +39,7 @@ const defaultSkills: Skill[] = [
     ],
     experience: ["Django", "FastAPI", "NumPy", "Pandas"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-green-400/10",
+      "hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-yellow-200/20",
   },
   {
     name: "Go",
@@ -89,6 +89,42 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-green-700/10 hover:to-lime-600/10",
   },
   {
+    name: "Google Cloud Platform",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    description: [
+      "**Experience:**",
+      "• Created responsive web designs using modern CSS techniques like Flexbox and Grid.",
+      "• Enhanced user experience by implementing CSS animations and transitions for smooth UI interactions.",
+    ],
+    experience: ["Flexbox", "Grid", "Animations", "Tailwind", "SASS"],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-amber-900/40 hover:to-blue-900/40",
+  },
+  {
+    name: "AWS",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
+    description: [
+      "**Experience:**",
+      "• Architected and deployed cloud-native applications on AWS",
+      "• Managed serverless architectures using Lambda and API Gateway",
+    ],
+    experience: ["EC2", "S3", "Lambda", "ECS", "CloudFormation"],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-orange-400/10 hover:to-yellow-500/10",
+  },
+  {
+    name: "MongoDB",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    description: [
+      "**Experience:**",
+      "• Designed and optimized MongoDB schemas for various applications",
+      "• Implemented data aggregation pipelines and indexing strategies",
+    ],
+    experience: ["Mongoose", "Atlas", "Aggregation", "Indexing", "Replication"],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-green-700/10 hover:to-green-400/10",
+  },
+  {
     name: "React",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     description: [
@@ -134,7 +170,7 @@ const defaultSkills: Skill[] = [
       "Web Components",
     ],
     gradient:
-      "hover:bg-gradient-to-r hover:from-stone-700/10 hover:to-slate-800/10",
+      "hover:bg-gradient-to-r hover:from-stone-700/30 hover:to-slate-800/70",
   },
   {
     name: "Express JS",
@@ -153,30 +189,6 @@ const defaultSkills: Skill[] = [
     ],
     gradient:
       "hover:bg-gradient-to-r hover:from-gray-800/10 hover:to-gray-100/10",
-  },
-  {
-    name: "MongoDB",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    description: [
-      "**Experience:**",
-      "• Designed and optimized MongoDB schemas for various applications",
-      "• Implemented data aggregation pipelines and indexing strategies",
-    ],
-    experience: ["Mongoose", "Atlas", "Aggregation", "Indexing", "Replication"],
-    gradient:
-      "hover:bg-gradient-to-r hover:from-green-700/10 hover:to-green-400/10",
-  },
-  {
-    name: "AWS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
-    description: [
-      "**Experience:**",
-      "• Architected and deployed cloud-native applications on AWS",
-      "• Managed serverless architectures using Lambda and API Gateway",
-    ],
-    experience: ["EC2", "S3", "Lambda", "ECS", "CloudFormation"],
-    gradient:
-      "hover:bg-gradient-to-r hover:from-orange-400/10 hover:to-yellow-500/10",
   },
   {
     name: "Docker",
@@ -207,18 +219,6 @@ const defaultSkills: Skill[] = [
     ],
     gradient:
       "hover:bg-gradient-to-r hover:from-orange-500/10 hover:to-red-400/10",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-    description: [
-      "**Experience:**",
-      "• Created responsive web designs using modern CSS techniques like Flexbox and Grid.",
-      "• Enhanced user experience by implementing CSS animations and transitions for smooth UI interactions.",
-    ],
-    experience: ["Flexbox", "Grid", "Animations", "Tailwind", "SASS"],
-    gradient:
-      "hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-blue-600/10",
   },
 ];
 
