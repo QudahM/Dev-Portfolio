@@ -39,7 +39,7 @@ const defaultSkills: Skill[] = [
     ],
     experience: ["Django", "FastAPI", "NumPy", "Pandas"],
     gradient:
-      "hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-yellow-200/20",
+      "hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-yellow-300/20",
   },
   {
     name: "Go",
@@ -113,6 +113,20 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-orange-400/10 hover:to-yellow-500/10",
   },
   {
+    name: "Redis",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+    description: [
+      "**Experience:**",
+      "• Implemented responsive UIs with HTML5 for React and FastAPI applications, improving user",
+      "• Utilized HTML5 to implement many features like a new pop-up page for rotating documents",
+    ],
+    experience: [
+      "TTL", "Pub/Sub", "Caching", "Data Structures", "Persistence"
+    ],
+    gradient:
+      "hover:bg-gradient-to-r hover:from-red-600/20 hover:to-rose-500/10",
+  },
+  {
     name: "MongoDB",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
     description: [
@@ -155,24 +169,6 @@ const defaultSkills: Skill[] = [
       "hover:bg-gradient-to-r hover:from-lime-500/10 hover:to-emerald-500/10",
   },
   {
-    name: "Next JS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-    description: [
-      "**Experience:**",
-      "• Implemented responsive UIs with HTML5 for React and FastAPI applications, improving user",
-      "• Utilized HTML5 to implement many features like a new pop-up page for rotating documents",
-    ],
-    experience: [
-      "Semantic Elements",
-      "Forms",
-      "Canvas",
-      "Audio/Video",
-      "Web Components",
-    ],
-    gradient:
-      "hover:bg-gradient-to-r hover:from-stone-700/30 hover:to-slate-800/70",
-  },
-  {
     name: "Express JS",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
     description: [
@@ -188,7 +184,7 @@ const defaultSkills: Skill[] = [
       "Web Components",
     ],
     gradient:
-      "hover:bg-gradient-to-r hover:from-gray-800/10 hover:to-gray-100/10",
+      "hover:bg-gradient-to-r hover:from-slate-800/70 hover:to-gray-100/10",
   },
   {
     name: "Docker",
@@ -218,7 +214,7 @@ const defaultSkills: Skill[] = [
       "Branching",
     ],
     gradient:
-      "hover:bg-gradient-to-r hover:from-orange-500/10 hover:to-red-400/10",
+      "hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-400/10",
   },
 ];
 

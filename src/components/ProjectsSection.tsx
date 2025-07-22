@@ -33,7 +33,7 @@ const defaultProjects: Project[] = [
     demoUrl: "https://grantbridge.online/",
     githubUrl: "https://github.com/QudahM/GrantBridge",
     categories: ["Fullstack", "API", "Cloud Hosted", "Backend"],
-    technologies: ["React", "TypeScript", "Express.js", "Perplexity API", "AWS"],
+    technologies: ["React", "TypeScript", "Express.js", "Perplexity API", "AWS", "Docker"],
     features: [
       "AI-powered grant/scholarships discovery based on user profile",
       "Converts complex eligibility criteria into plain, digestible language",
@@ -52,10 +52,10 @@ const defaultProjects: Project[] = [
     demoUrl: "https://collaborative-canvas-25764.firebaseapp.com/",
     githubUrl: "https://github.com/QudahM/Collaborative-Canvas",
     categories: ["Fullstack", "API", "Cloud Hosted", "Backend"],
-    technologies: ["Go", "React", "TypeScript", "Google Cloud Platform", "Docker"],
+    technologies: ["Go", "React", "TypeScript", "Google Cloud Platform", "Redis", "Docker"],
     features: [
       "Real-time collaborative drawing canvas",
-      "Live user presence tracking",
+      "Live user presence tracking to know how many users are online",
       "WebSocket-based backend with Go",
       "Integrated team chat for collaboration",
       "Dockerized architecture for frontend and backend",
