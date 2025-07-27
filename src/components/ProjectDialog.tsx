@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Badge } from "./ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Calendar, CheckCircle2 } from "lucide-react";
+import { ExternalLink, Github, Calendar, CheckCircle2, Star } from "lucide-react";
 
 interface ProjectDialogProps {
   readonly isOpen: boolean;
@@ -18,6 +18,8 @@ interface ProjectDialogProps {
     readonly features?: readonly string[];
     readonly challenges?: readonly string[];
     readonly date?: string;
+    readonly extraURL?: string;
+    readonly extraLabel?: string;
   };
 }
 
@@ -148,6 +150,20 @@ export function ProjectDialog({
                   View Code
                 </a>
               </Button>
+
+              {project.extraURL && project.extraLabel && (
+                <Button asChild>
+                  <a
+                    href={project.extraURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <Star className="w-4 h-4" />
+                    <span>{project.extraLabel}</span>
+                  </a>
+                </Button>
+              )}
             </div>
           </div>
         </div>

@@ -16,6 +16,8 @@ interface Project {
   features?: string[];
   challenges?: string[];
   date?: string;
+  extraURL?: string;
+  extraLabel?: string;
 }
 
 interface ProjectsSectionProps {
@@ -44,7 +46,7 @@ const defaultProjects: Project[] = [
   },
   {
     id: 2,
-    date: "2025",
+    date: "2024",
     title: "Collaborative Canvas",
     description:
       "A real-time collaborative whiteboard app. Supports simultaneous drawing, team chat, and user presence tracking via WebSockets. Designed for seamless remote brainstorming and team ideation.",
@@ -83,6 +85,27 @@ const defaultProjects: Project[] = [
   {
     id: 4,
     date: "2025",
+    title: "QR Nexus",
+    description:
+      "A QR code generation and analytics platform, where you can verify the safety of QR codes. Create beautiful, trackable QR codes with real-time analytics, security verification, and advanced customization options. Featured on Bolt Gallery under the Productivity category.",
+    imageUrls: ["/assets/projects/qrnexus_homepage.png","/assets/projects/qrnexus_gallery.png", "/assets/projects/qrnexus_verifypage.png", "/assets/projects/qrnexus_generatepage.png"],
+    demoUrl: "https://qrnexus.site/",
+    githubUrl: "https://github.com/QudahM/QR-Verify",
+    categories: ["Fullstack", "API", "Cloud Hosted", "Database"],
+    technologies: ["TypeScript", "React", "PostgreSQL", "Vite", "Google Safe Browsing API"],
+    features: [
+      "Instant QR code generation with real-time updates",
+      "Advanced design customization: gradients, logos, shapes",
+      "Security verification using Google Safe Browsing API",
+      "Detailed analytics dashboard with scan tracking and visualizations",
+      "Fully responsive UI with dark/light mode and smooth transitions"
+    ],
+    extraURL: "https://bolt.new/gallery/categories/productivity",
+    extraLabel: "Featured",
+  },
+  {
+    id: 5,
+    date: "2025",
     title: "Pixel Shift Daily Puzzle",
     description:
       "A daily color-matching puzzle game built with Devvit and Reddit WebViews. Players rearrange tiles to match a randomly generated pattern using the fewest moves possible. Features leaderboard integration and smooth UI animations.",
@@ -100,27 +123,8 @@ const defaultProjects: Project[] = [
     ],
   },
   {
-    id: 5,
-    date: "2025",
-    title: "QR Nexus",
-    description:
-      "A QR code generation and analytics platform, where you can verify the safety of QR codes. Create beautiful, trackable QR codes with real-time analytics, security verification, and advanced customization options.",
-    imageUrls: ["/assets/projects/qrnexus_homepage.png", "/assets/projects/qrnexus_verifypage.png", "/assets/projects/qrnexus_generatepage.png"],
-    demoUrl: "https://qrnexus.site/",
-    githubUrl: "https://github.com/QudahM/QR-Verify",
-    categories: ["Fullstack", "API", "Cloud Hosted", "Database"],
-    technologies: ["TypeScript", "React", "PostgreSQL", "Vite", "Google Safe Browsing API"],
-    features: [
-      "Instant QR code generation with real-time updates",
-      "Advanced design customization: gradients, logos, shapes",
-      "Security verification using Google Safe Browsing API",
-      "Detailed analytics dashboard with scan tracking and visualizations",
-      "Fully responsive UI with dark/light mode and smooth transitions"
-    ],
-  },
-  {
     id: 6,
-    date: "2025",
+    date: "2024",
     title: "Tartarus Discord Bot",
     description:
       "A feature-rich Discord bot built with Python, offering moderation tools, custom commands, and automated tasks for server management. Handles moderation for 2,000+ users efficiently.",
@@ -253,6 +257,7 @@ const ProjectsSection = ({
                 demoUrl={project.demoUrl}
                 githubUrl={project.githubUrl}
                 technologies={project.technologies}
+                date={project.date}
                 onClick={() => setSelectedProject(project)}
               />
             </motion.div>
