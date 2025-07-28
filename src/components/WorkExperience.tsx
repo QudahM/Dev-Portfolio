@@ -27,7 +27,7 @@ const defaultExperiences: WorkExperience[] = [
     role: "Software Engineer Intern",
     company: "Sun Life Financial",
     logo: "assets/logos/sunlife.png",
-    duration: "Aug 2023 - Dec 2023",
+    duration: "Aug. 2023 - Dec. 2023",
     description: [
       "Built a Kafka-powered microservice pipeline handling over 10,000 data files per day, reducing latency by 15% through parallel JSON processing and real-time event streaming.",
       "Developed Java-based Kafka Streams applications to transform and route internal data, expanding test coverage by 25% and improving reliability for 5,000+ internal users.",
@@ -48,7 +48,7 @@ const defaultExperiences: WorkExperience[] = [
     role: "Software Developer",
     company: "eWorx Technology",
     logo: "assets/logos/eWorx.jpg",
-    duration: "Jan 2023 - Aug 2023",
+    duration: "Jan. 2023 - Aug. 2023",
     description: [
       "Migrated a legacy Django API to FastAPI, introducing async request handling and streamlining backend logic, reducing average response latency by 36% across traffic endpoints.",
       "Enhanced database performance through MongoDB schema optimizations and query projection, increasing retrieval speed by 30% while enhancing maintainability for core data.",
@@ -67,7 +67,7 @@ const defaultExperiences: WorkExperience[] = [
     role: "Software Developer Intern",
     company: "AIMS",
     logo: "assets/logos/AIMS.jpg",
-    duration: "May 2022 - Dec 2022",
+    duration: "Jan. 2022 - Dec. 2022",
     description: [
       "Refactored Spring Boot service logic to streamline CRUD operations on employee data, applying indexing strategies in MySQL that cut API response time by 22%.",
       "Built a React-based document preview component with rotation and zoom features, modernizing HR workflows and reducing paper usage by over 15% through digital adoption.",
