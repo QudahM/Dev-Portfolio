@@ -3,6 +3,18 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, FileText } from "lucide-react";
 import profileImage from "/profile.png";
 import myResume from "/Mohammad Qudah-Resume.pdf";
+import { useState, useEffect, useRef } from "react";
+
+interface Symbol {
+  id: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  text: string;
+  size: number;
+  mass: number;
+}
 
 interface HeroSectionProps {
   name?: string;
@@ -29,68 +41,180 @@ const HeroSection = ({
     resume: myResume,
   },
 }: HeroSectionProps) => {
+  const [symbols, setSymbols] = useState<Symbol[]>([]);
+  const animationRef = useRef<number>();
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Initialize symbols with physics properties
+  useEffect(() => {
+    const symbolTexts = ["{}", "[]", "JS", "Git", "AWS", "GO", "API"];
+    const initialSymbols: Symbol[] = symbolTexts.map((text, i) => ({
+      id: i,
+      x: Math.random() * (window.innerWidth - 100) + 50,
+      y: Math.random() * (window.innerHeight - 100) + 50,
+      vx: (Math.random() - 0.5) * 2, // Random velocity between -1 and 1
+      vy: (Math.random() - 0.5) * 2,
+      text,
+      size: 60,
+      mass: 1,
+    }));
+    setSymbols(initialSymbols);
+  }, []);
+
+  // Physics engine with collision detection
+  useEffect(() => {
+    const updatePhysics = () => {
+      setSymbols((prevSymbols) => {
+        const newSymbols = [...prevSymbols];
+        const containerWidth = window.innerWidth;
+        const containerHeight = window.innerHeight;
+
+        // Update positions
+        newSymbols.forEach((symbol) => {
+          symbol.x += symbol.vx;
+          symbol.y += symbol.vy;
+
+          // Boundary collisions with damping
+          if (
+            symbol.x <= symbol.size / 2 ||
+            symbol.x >= containerWidth - symbol.size / 2
+          ) {
+            symbol.vx *= -0.8; // Damping factor
+            symbol.x = Math.max(
+              symbol.size / 2,
+              Math.min(containerWidth - symbol.size / 2, symbol.x)
+            );
+          }
+          if (
+            symbol.y <= symbol.size / 2 ||
+            symbol.y >= containerHeight - symbol.size / 2
+          ) {
+            symbol.vy *= -0.8;
+            symbol.y = Math.max(
+              symbol.size / 2,
+              Math.min(containerHeight - symbol.size / 2, symbol.y)
+            );
+          }
+
+          // Apply slight friction
+          symbol.vx *= 0.999;
+          symbol.vy *= 0.999;
+
+          // Add small random force to keep movement interesting
+          symbol.vx += (Math.random() - 0.5) * 0.01;
+          symbol.vy += (Math.random() - 0.5) * 0.01;
+
+          // Limit maximum velocity
+          const maxVel = 3;
+          if (Math.abs(symbol.vx) > maxVel)
+            symbol.vx = Math.sign(symbol.vx) * maxVel;
+          if (Math.abs(symbol.vy) > maxVel)
+            symbol.vy = Math.sign(symbol.vy) * maxVel;
+        });
+
+        // Check for collisions between symbols
+        for (let i = 0; i < newSymbols.length; i++) {
+          for (let j = i + 1; j < newSymbols.length; j++) {
+            const symbol1 = newSymbols[i];
+            const symbol2 = newSymbols[j];
+
+            const dx = symbol2.x - symbol1.x;
+            const dy = symbol2.y - symbol1.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const minDistance = (symbol1.size + symbol2.size) / 2;
+
+            if (distance < minDistance && distance > 0) {
+              // Collision detected - calculate collision response
+              const overlap = minDistance - distance;
+              const separationX = (dx / distance) * overlap * 0.5;
+              const separationY = (dy / distance) * overlap * 0.5;
+
+              // Separate the symbols
+              symbol1.x -= separationX;
+              symbol1.y -= separationY;
+              symbol2.x += separationX;
+              symbol2.y += separationY;
+
+              // Calculate collision velocities (elastic collision)
+              const normalX = dx / distance;
+              const normalY = dy / distance;
+
+              const relativeVelocityX = symbol2.vx - symbol1.vx;
+              const relativeVelocityY = symbol2.vy - symbol1.vy;
+
+              const velocityAlongNormal =
+                relativeVelocityX * normalX + relativeVelocityY * normalY;
+
+              if (velocityAlongNormal > 0) continue; // Objects separating
+
+              const restitution = 0.8; // Bounciness factor
+              const impulse =
+                (-(1 + restitution) * velocityAlongNormal) /
+                (symbol1.mass + symbol2.mass);
+
+              const impulseX = impulse * normalX;
+              const impulseY = impulse * normalY;
+
+              symbol1.vx -= impulseX * symbol2.mass;
+              symbol1.vy -= impulseY * symbol2.mass;
+              symbol2.vx += impulseX * symbol1.mass;
+              symbol2.vy += impulseY * symbol1.mass;
+            }
+          }
+        }
+
+        return newSymbols;
+      });
+
+      animationRef.current = requestAnimationFrame(updatePhysics);
+    };
+
+    if (symbols.length > 0) {
+      animationRef.current = requestAnimationFrame(updatePhysics);
+    }
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [symbols.length]);
+
   return (
-    <section className="min-h-screen relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center px-4 py-16 overflow-hidden">
+    <section
+      ref={containerRef}
+      className="min-h-screen relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center px-4 py-16 overflow-hidden"
+    >
       {/* Enhanced grid pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-      
+
       {/* Animated gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-purple-500/10 animate-pulse" />
       <div className="absolute inset-0 bg-gradient-to-bl from-cyan-500/5 via-transparent to-pink-500/5" />
-      
+
       {/* Subtle radial gradient for depth */}
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-blue-900/5 to-transparent" />
-      {/* Professional animated background */}
+      {/* Professional animated background with physics */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Animated geometric particles */}
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={`particle-${i}`}
-            className="absolute w-2 h-2 bg-blue-400/20 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            transition={{
-              duration: Math.random() * 20 + 10,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "linear",
-            }}
+        {/* Physics-based floating code symbols with collision */}
+        {symbols.map((symbol) => (
+          <div
+            key={symbol.id}
+            className="absolute text-blue-300/15 font-mono text-6xl select-none pointer-events-none transition-all duration-75 ease-linear"
             style={{
-              opacity: Math.random() * 0.3 + 0.1,
-            }}
-          />
-        ))}
-        
-        {/* Floating code symbols with better design */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={`symbol-${i}`}
-            className="absolute text-blue-300/10 font-mono text-6xl select-none"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              rotate: 0,
-            }}
-            animate={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              rotate: 360,
-            }}
-            transition={{
-              duration: Math.random() * 30 + 20,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "linear",
+              left: symbol.x - symbol.size / 2,
+              top: symbol.y - symbol.size / 2,
+              width: symbol.size,
+              height: symbol.size,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transform: `rotate(${symbol.vx * 10}deg)`, // Rotate based on velocity
+              filter: `blur(${Math.abs(symbol.vx + symbol.vy) * 0.5}px)`, // Motion blur effect
             }}
           >
-            {["{ }", "[ ]", "JS", "Git", "AWS", "GO", "API",][i]}
-          </motion.div>
+            {symbol.text}
+          </div>
         ))}
 
         {/* Animated connecting lines */}
@@ -115,31 +239,6 @@ const HeroSection = ({
             />
           ))}
         </svg>
-
-        {/* Subtle tech icons floating */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={`tech-${i}`}
-            className="absolute text-purple-300/8 text-4xl font-bold"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              scale: 0.5,
-            }}
-            animate={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              scale: 1,
-            }}
-            transition={{
-              duration: Math.random() * 25 + 15,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-          >
-          </motion.div>
-        ))}
       </div>
 
       <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
