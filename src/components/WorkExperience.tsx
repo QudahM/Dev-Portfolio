@@ -122,7 +122,7 @@ const WorkExperienceSection = ({
           <h2 className="text-3xl font-bold mb-4 text-white relative z-10">
             Work Experience
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto relative z-10">
+          <p className="text-gray-200 max-w-2xl mx-auto relative z-10">
             Click on any role to learn more about my professional journey and
             contributions
           </p>

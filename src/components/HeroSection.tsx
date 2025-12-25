@@ -33,7 +33,7 @@ const HeroSection = ({
   name = "Mohammad Qudah",
   title = "Software Engineer",
   location = "Toronto, Ontario, Canada",
-  bio = "I am a B.Sc. Computer Science graduate with hands-on experience in server-side and distributed systems development, including microservices architectures. Skilled in Java, Python, SQL, and modern backend technologies.",
+  bio = "I hold a B.Sc. in Computer Science and have practical experience in server-side and distributed systems development, including microservices architectures. I am skilled in Java, Python, SQL, and modern backend technologies.",
   imageUrl = profileImage,
   socialLinks = {
     github: "https://github.com/QudahM",
@@ -48,123 +48,133 @@ const HeroSection = ({
   // Initialize symbols with physics properties
   useEffect(() => {
     const symbolTexts = ["{}", "[]", "JS", "Git", "AWS", "GO", "API"];
-    const initialSymbols: Symbol[] = symbolTexts.map((text, i) => ({
-      id: i,
-      x: Math.random() * (window.innerWidth - 100) + 50,
-      y: Math.random() * (window.innerHeight - 100) + 50,
-      vx: (Math.random() - 0.5) * 2, // Random velocity between -1 and 1
-      vy: (Math.random() - 0.5) * 2,
-      text,
-      size: 60,
-      mass: 1,
-    }));
+    const constantSpeed = 1; // Fixed speed for all symbols
+
+    const initialSymbols: Symbol[] = symbolTexts.map((text, i) => {
+      // Generate random direction but maintain constant speed
+      const angle = Math.random() * Math.PI * 2;
+      return {
+        id: i,
+        x: Math.random() * (window.innerWidth - 100) + 50,
+        y: Math.random() * (window.innerHeight - 100) + 50,
+        vx: Math.cos(angle) * constantSpeed,
+        vy: Math.sin(angle) * constantSpeed,
+        text,
+        size: 60,
+        mass: 1,
+      };
+    });
     setSymbols(initialSymbols);
   }, []);
 
   // Physics engine with collision detection
   useEffect(() => {
-    const updatePhysics = () => {
-      setSymbols((prevSymbols) => {
-        const newSymbols = [...prevSymbols];
-        const containerWidth = window.innerWidth;
-        const containerHeight = window.innerHeight;
+    let lastTime = 0;
+    const targetFPS = 60;
+    const frameTime = 1000 / targetFPS;
+    const constantSpeed = 1; // Target speed for all symbols
 
-        // Update positions
-        newSymbols.forEach((symbol) => {
-          symbol.x += symbol.vx;
-          symbol.y += symbol.vy;
+    const normalizeVelocity = (symbol: Symbol) => {
+      const currentSpeed = Math.sqrt(
+        symbol.vx * symbol.vx + symbol.vy * symbol.vy
+      );
+      if (currentSpeed > 0) {
+        symbol.vx = (symbol.vx / currentSpeed) * constantSpeed;
+        symbol.vy = (symbol.vy / currentSpeed) * constantSpeed;
+      }
+    };
 
-          // Boundary collisions with damping
-          if (
-            symbol.x <= symbol.size / 2 ||
-            symbol.x >= containerWidth - symbol.size / 2
-          ) {
-            symbol.vx *= -0.8; // Damping factor
-            symbol.x = Math.max(
-              symbol.size / 2,
-              Math.min(containerWidth - symbol.size / 2, symbol.x)
-            );
-          }
-          if (
-            symbol.y <= symbol.size / 2 ||
-            symbol.y >= containerHeight - symbol.size / 2
-          ) {
-            symbol.vy *= -0.8;
-            symbol.y = Math.max(
-              symbol.size / 2,
-              Math.min(containerHeight - symbol.size / 2, symbol.y)
-            );
-          }
+    const updatePhysics = (currentTime: number) => {
+      if (currentTime - lastTime >= frameTime) {
+        setSymbols((prevSymbols) => {
+          const newSymbols = [...prevSymbols];
+          const containerWidth = window.innerWidth;
+          const containerHeight = window.innerHeight;
+          const deltaTime = 0.015; // Fixed time step for consistent physics
 
-          // Apply slight friction
-          symbol.vx *= 0.999;
-          symbol.vy *= 0.999;
+          // Update positions with constant speed
+          newSymbols.forEach((symbol) => {
+            symbol.x += symbol.vx * deltaTime * 60;
+            symbol.y += symbol.vy * deltaTime * 60;
 
-          // Add small random force to keep movement interesting
-          symbol.vx += (Math.random() - 0.5) * 0.01;
-          symbol.vy += (Math.random() - 0.5) * 0.01;
+            // Boundary collisions - reflect velocity but maintain speed
+            if (
+              symbol.x <= symbol.size / 2 ||
+              symbol.x >= containerWidth - symbol.size / 2
+            ) {
+              symbol.vx *= -1; // Perfect reflection
+              symbol.x = Math.max(
+                symbol.size / 2,
+                Math.min(containerWidth - symbol.size / 2, symbol.x)
+              );
+              normalizeVelocity(symbol); // Maintain constant speed
+            }
+            if (
+              symbol.y <= symbol.size / 2 ||
+              symbol.y >= containerHeight - symbol.size / 2
+            ) {
+              symbol.vy *= -1; // Perfect reflection
+              symbol.y = Math.max(
+                symbol.size / 2,
+                Math.min(containerHeight - symbol.size / 2, symbol.y)
+              );
+              normalizeVelocity(symbol); // Maintain constant speed
+            }
 
-          // Limit maximum velocity
-          const maxVel = 3;
-          if (Math.abs(symbol.vx) > maxVel)
-            symbol.vx = Math.sign(symbol.vx) * maxVel;
-          if (Math.abs(symbol.vy) > maxVel)
-            symbol.vy = Math.sign(symbol.vy) * maxVel;
-        });
+            // Add tiny random direction changes for variety (but maintain speed)
+            const randomAngle = (Math.random() - 0.5) * 0.02;
+            const currentAngle = Math.atan2(symbol.vy, symbol.vx);
+            const newAngle = currentAngle + randomAngle;
+            symbol.vx = Math.cos(newAngle) * constantSpeed;
+            symbol.vy = Math.sin(newAngle) * constantSpeed;
+          });
 
-        // Check for collisions between symbols
-        for (let i = 0; i < newSymbols.length; i++) {
-          for (let j = i + 1; j < newSymbols.length; j++) {
-            const symbol1 = newSymbols[i];
-            const symbol2 = newSymbols[j];
+          // Optimized collision detection with speed preservation
+          for (let i = 0; i < newSymbols.length; i++) {
+            for (let j = i + 1; j < newSymbols.length; j++) {
+              const symbol1 = newSymbols[i];
+              const symbol2 = newSymbols[j];
 
-            const dx = symbol2.x - symbol1.x;
-            const dy = symbol2.y - symbol1.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            const minDistance = (symbol1.size + symbol2.size) / 2;
+              const dx = symbol2.x - symbol1.x;
+              const dy = symbol2.y - symbol1.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+              const minDistance = (symbol1.size + symbol2.size) / 2;
 
-            if (distance < minDistance && distance > 0) {
-              // Collision detected - calculate collision response
-              const overlap = minDistance - distance;
-              const separationX = (dx / distance) * overlap * 0.5;
-              const separationY = (dy / distance) * overlap * 0.5;
+              if (distance < minDistance && distance > 0) {
+                // Separate the symbols
+                const overlap = minDistance - distance;
+                const separationX = (dx / distance) * overlap * 0.6;
+                const separationY = (dy / distance) * overlap * 0.6;
 
-              // Separate the symbols
-              symbol1.x -= separationX;
-              symbol1.y -= separationY;
-              symbol2.x += separationX;
-              symbol2.y += separationY;
+                symbol1.x -= separationX;
+                symbol1.y -= separationY;
+                symbol2.x += separationX;
+                symbol2.y += separationY;
 
-              // Calculate collision velocities (elastic collision)
-              const normalX = dx / distance;
-              const normalY = dy / distance;
+                // Calculate collision response with speed preservation
+                const normalX = dx / distance;
+                const normalY = dy / distance;
 
-              const relativeVelocityX = symbol2.vx - symbol1.vx;
-              const relativeVelocityY = symbol2.vy - symbol1.vy;
+                // Reflect velocities along the collision normal
+                const dot1 = symbol1.vx * normalX + symbol1.vy * normalY;
+                const dot2 = symbol2.vx * normalX + symbol2.vy * normalY;
 
-              const velocityAlongNormal =
-                relativeVelocityX * normalX + relativeVelocityY * normalY;
+                symbol1.vx -= 2 * dot1 * normalX;
+                symbol1.vy -= 2 * dot1 * normalY;
+                symbol2.vx -= 2 * dot2 * normalX;
+                symbol2.vy -= 2 * dot2 * normalY;
 
-              if (velocityAlongNormal > 0) continue; // Objects separating
-
-              const restitution = 0.8; // Bounciness factor
-              const impulse =
-                (-(1 + restitution) * velocityAlongNormal) /
-                (symbol1.mass + symbol2.mass);
-
-              const impulseX = impulse * normalX;
-              const impulseY = impulse * normalY;
-
-              symbol1.vx -= impulseX * symbol2.mass;
-              symbol1.vy -= impulseY * symbol2.mass;
-              symbol2.vx += impulseX * symbol1.mass;
-              symbol2.vy += impulseY * symbol1.mass;
+                // Ensure both symbols maintain constant speed after collision
+                normalizeVelocity(symbol1);
+                normalizeVelocity(symbol2);
+              }
             }
           }
-        }
 
-        return newSymbols;
-      });
+          return newSymbols;
+        });
+        lastTime = currentTime;
+      }
 
       animationRef.current = requestAnimationFrame(updatePhysics);
     };
@@ -200,17 +210,17 @@ const HeroSection = ({
         {symbols.map((symbol) => (
           <div
             key={symbol.id}
-            className="absolute text-blue-300/15 font-mono text-6xl select-none pointer-events-none transition-all duration-75 ease-linear"
+            className="absolute text-blue-300/15 font-mono text-6xl select-none pointer-events-none will-change-transform"
             style={{
-              left: symbol.x - symbol.size / 2,
-              top: symbol.y - symbol.size / 2,
               width: symbol.size,
               height: symbol.size,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              transform: `rotate(${symbol.vx * 10}deg)`, // Rotate based on velocity
-              filter: `blur(${Math.abs(symbol.vx + symbol.vy) * 0.5}px)`, // Motion blur effect
+              transform: `translate3d(${symbol.x - symbol.size / 2}px, ${
+                symbol.y - symbol.size / 2
+              }px, 0) rotate(${symbol.vx * 5}deg)`,
+              filter: `blur(${Math.abs(symbol.vx + symbol.vy) * 0.2}px)`,
             }}
           >
             {symbol.text}

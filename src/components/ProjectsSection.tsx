@@ -165,18 +165,7 @@ const defaultProjects: Project[] = [
 const ProjectsSection = ({
   projects = defaultProjects,
 }: ProjectsSectionProps) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  const categories = [
-    "All",
-    ...Array.from(new Set(projects.flatMap((project) => project.categories))),
-  ];
-
-  const filteredProjects =
-    selectedCategory === "All"
-      ? projects
-      : projects.filter((project) => project.categories.includes(selectedCategory));
 
   return (
     <section className="py-16 px-4 bg-gray-900 relative overflow-hidden">
@@ -212,36 +201,23 @@ const ProjectsSection = ({
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold mb-4 text-white relative z-10">
+          <h2 className="text-3xl text-white font-bold mb-4 relative z-10">
             Projects
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto relative z-10">
+          <p className="text-gray-200 max-w-2xl mx-auto relative z-10">
             Explore my latest projects and technical work across different
             domains
           </p>
-          <p className="text-gray-300 max-w-2xl mx-auto relative z-10">
+          <p className="text-gray-200 max-w-2xl mx-auto relative z-10">
             (Click on any project to view more details)
           </p>
         </motion.div>
-
-        <div className="flex flex-wrap justify-center gap-2 mb-8 relative z-10">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              onClick={() => setSelectedCategory(category)}
-              className="min-w-[100px]"
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
 
         <motion.div
           layout
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-items-center relative z-10 max-w-[1800px] mx-auto"
         >
-          {filteredProjects.map((project) => (
+          {projects.map((project) => (
             <motion.div
               key={project.id}
               layout
