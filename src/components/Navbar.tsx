@@ -15,8 +15,8 @@ const Navbar = ({
   const navItems = [
     { label: "Home", section: "hero" },
     { label: "Skills", section: "skills" },
-    { label: "Experience", section: "experience" },
     { label: "Projects", section: "projects" },
+    { label: "Experience", section: "experience" },
     { label: "Contact", section: "contact" },
   ];
 
@@ -25,24 +25,39 @@ const Navbar = ({
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100; // Offset for better trigger point
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
 
-      // Find the current section
+      // Check if we're at the bottom of the page (for contact section)
+      if (scrollPosition + windowHeight >= documentHeight - 50) {
+        setActiveSection("contact");
+        return;
+      }
+
+      // Find the current section by checking which section is most visible
+      let currentSection = "hero";
+      let maxVisibleArea = 0;
+
       for (const item of navItems) {
         const element = document.getElementById(item.section);
         if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(item.section);
-            break;
+          const rect = element.getBoundingClientRect();
+          const visibleTop = Math.max(0, -rect.top);
+          const visibleBottom = Math.min(rect.height, windowHeight - rect.top);
+          const visibleArea = Math.max(0, visibleBottom - visibleTop);
+
+          if (visibleArea > maxVisibleArea) {
+            maxVisibleArea = visibleArea;
+            currentSection = item.section;
           }
         }
       }
+
+      setActiveSection(currentSection);
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Call once to set initial state
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -52,7 +67,11 @@ const Navbar = ({
         <Button
           key={item.section}
           variant="ghost"
-          className={`text-sm font-medium transition-colors hover:text-white hover:bg-gray-800/50 ${activeSection === item.section ? "text-white bg-gray-800/50" : "text-gray-300"}`}
+          className={`text-sm font-medium transition-colors hover:text-white hover:bg-gray-800/50 ${
+            activeSection === item.section
+              ? "text-white bg-gray-800/50"
+              : "text-gray-300"
+          }`}
           onClick={() => onSectionClick(item.section)}
         >
           {item.label}
@@ -63,7 +82,9 @@ const Navbar = ({
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-gray-900/80 ${isScrolled ? "border-b border-gray-800" : ""}`}
+      className={`fixed top-0 w-full z-50 bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-gray-900/80 ${
+        isScrolled ? "border-b border-gray-800" : ""
+      }`}
     >
       <div className="container flex h-16 items-center justify-between px-4">
         <div className="flex items-center space-x-2">

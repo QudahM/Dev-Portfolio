@@ -46,12 +46,12 @@ const Home = () => {
           <SkillsSection />
         </div>
 
-        <div id="experience">
-          <WorkExperienceSection />
-        </div>
-
         <div id="projects">
           <ProjectsSection />
+        </div>
+
+        <div id="experience">
+          <WorkExperienceSection />
         </div>
 
         <div id="contact">

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -20,6 +20,55 @@ const ContactSection = ({
   linkedin = "https://linkedin.com/in/QudahM",
   resume = myResume,
 }: ContactSectionProps) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      // Create mailto link with form data
+      const subject = encodeURIComponent(
+        `Portfolio Contact from ${formData.name}`
+      );
+      const body = encodeURIComponent(`Message:\n${formData.message}`);
+      const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+
+      // Open email client
+      window.location.href = mailtoLink;
+
+      // Reset form and show success
+      setFormData({ name: "", message: "" });
+      setSubmitStatus("success");
+
+      // Reset success message after 3 seconds
+      setTimeout(() => setSubmitStatus("idle"), 3000);
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus("idle"), 3000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const [particles, setParticles] = useState<
     Array<{
       id: number;
@@ -72,7 +121,7 @@ const ContactSection = ({
       transition: {
         staggerChildren: 0.1,
       },
-    }
+    },
   };
 
   const itemVariants = {
@@ -154,7 +203,7 @@ const ContactSection = ({
           />
         ))}
       </div>
-      
+
       {/* Connection lines animation */}
       <div className="absolute inset-0">
         {[...Array(9)].map((_, i) => (
@@ -162,7 +211,13 @@ const ContactSection = ({
             key={i}
             className="absolute w-full h-px"
             style={{
-              background: `linear-gradient(90deg, transparent 0%, ${["rgba(59,130,246,0.2)", "rgba(147,51,234,0.2)", "rgba(236,72,153,0.2)"][i % 3]} 50%, transparent 100%)`,
+              background: `linear-gradient(90deg, transparent 0%, ${
+                [
+                  "rgba(59,130,246,0.2)",
+                  "rgba(147,51,234,0.2)",
+                  "rgba(236,72,153,0.2)",
+                ][i % 3]
+              } 50%, transparent 100%)`,
               top: `${20 + i * 15}%`,
               animation: `pulse-glow ${4 + i * 0.5}s infinite`,
               transform: `rotate(${i * 22.5}deg)`,
@@ -170,31 +225,31 @@ const ContactSection = ({
           />
         ))}
       </div>
-      
-      <motion.div 
-          className="max-w-6xl mx-auto"
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
+
+      <motion.div
+        className="max-w-6xl mx-auto"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <motion.div className="text-center mb-12" variants={itemVariants}>
+          <motion.h2
+            className="text-3xl font-bold mb-4 text-white relative z-10"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.2 }}
           >
-            <motion.div className="text-center mb-12" variants={itemVariants}>
-              <motion.h2
-                className="text-3xl font-bold mb-4 text-white relative z-10"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, delay: 0.2 }}
-              >
-              Get In Touch
-              </motion.h2>
-                <motion.p
-                  className="text-gray-300 max-w-2xl mx-auto relative z-10"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.65, delay: 0.4 }}
-                >
-                Have a question or want to work together? Feel free to reach out!
-              </motion.p>
-            </motion.div>
+            Get In Touch
+          </motion.h2>
+          <motion.p
+            className="text-gray-300 max-w-2xl mx-auto relative z-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.65, delay: 0.4 }}
+          >
+            Have a question or want to work together? Feel free to reach out!
+          </motion.p>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 relative z-10">
           {/* Contact Form */}
@@ -204,45 +259,74 @@ const ContactSection = ({
             whileHover="hover"
             variants={cardVariants}
           >
-            <Card className="p-6 bg-white overflow-hidden relative">
+            <Card className="p-6 bg-slate-100 overflow-hidden relative h-[450px]">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 opacity-50 rounded-lg" />
               <CardHeader className="relative z-10">
                 <CardTitle>Send a Message</CardTitle>
               </CardHeader>
               <CardContent className="relative z-10">
-                <motion.form className="space-y-6" variants={containerVariants}>
+                <motion.form
+                  className="space-y-6"
+                  variants={containerVariants}
+                  onSubmit={handleSubmit}
+                >
                   <motion.div className="space-y-2" variants={itemVariants}>
                     <Input
                       type="text"
+                      name="name"
                       placeholder="Your Name"
-                      className="w-full transition-all duration-300 hover:border-blue-400 focus:border-blue-500 focus:ring-blue-500"
-                    />
-                  </motion.div>
-                  <motion.div className="space-y-2" variants={itemVariants}>
-                    <Input
-                      type="email"
-                      placeholder="Your Email"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
                       className="w-full transition-all duration-300 hover:border-blue-400 focus:border-blue-500 focus:ring-blue-500"
                     />
                   </motion.div>
                   <motion.div className="space-y-2" variants={itemVariants}>
                     <Textarea
+                      name="message"
                       placeholder="Your Message"
-                      className="w-full min-h-[150px] transition-all duration-300 hover:border-blue-400 focus:border-blue-500 focus:ring-blue-500"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full min-h-[200px] transition-all duration-300 hover:border-blue-400 focus:border-blue-500 focus:ring-blue-500"
                     />
                   </motion.div>
-                    <motion.div variants={itemVariants}>
-                      <motion.div
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                  <motion.div variants={itemVariants}>
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Button
+                        type="submit"
+                        disabled={
+                          isSubmitting || !formData.name || !formData.message
+                        }
+                        className="w-full relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        <Button className="w-full relative overflow-hidden group">
-                          <span className="relative z-10">Send Message</span>
-                          <span className="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                        </Button>
-                      </motion.div>
+                        <span className="relative z-10">
+                          {isSubmitting
+                            ? "Opening Email..."
+                            : submitStatus === "success"
+                            ? "Email Opened!"
+                            : submitStatus === "error"
+                            ? "Try Again"
+                            : "Send Message"}
+                        </span>
+                        <span className="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                      </Button>
                     </motion.div>
-                  </motion.form>
+                    {submitStatus === "error" && (
+                      <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-red-600 text-sm mt-2 text-center"
+                      >
+                        Something went wrong. Please try again or email
+                        directly.
+                      </motion.p>
+                    )}
+                  </motion.div>
+                </motion.form>
               </CardContent>
             </Card>
           </motion.div>
@@ -254,7 +338,7 @@ const ContactSection = ({
             whileHover="hover"
             variants={cardVariants}
           >
-            <Card className="p-6 bg-white overflow-hidden relative">
+            <Card className="p-6 bg-slate-100 overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-blue-50 opacity-50" />
               <CardHeader className="relative z-10">
                 <CardTitle>Connect With Me</CardTitle>

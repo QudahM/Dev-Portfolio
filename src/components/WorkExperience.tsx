@@ -139,7 +139,7 @@ const WorkExperienceSection = ({
               onMouseLeave={() => setHoveredId(null)}
             >
               <Card
-                className={`bg-white transform transition-all duration-300 cursor-pointer ${hoveredId === exp.id ? "scale-[1.02] shadow-lg" : ""}`}
+                className={`bg-slate-200 transform transition-all duration-300 cursor-pointer ${hoveredId === exp.id ? "scale-[1.02] shadow-lg" : ""}`}
                 onClick={() => setSelectedExperience(exp)}
               >
                 <CardHeader>

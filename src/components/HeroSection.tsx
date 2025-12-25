@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, FileText } from "lucide-react";
@@ -22,7 +21,7 @@ const HeroSection = ({
   name = "Mohammad Qudah",
   title = "Software Engineer",
   location = "Toronto, Ontario, Canada",
-  bio = "I am a Computer Science graduate with experience in server-side and distributed systems development, with proficiency in microservices architecture. My expertise includes utilizing Java, Python, TypeScript, and More.",
+  bio = "I am a B.Sc. Computer Science graduate with hands-on experience in server-side and distributed systems development, including microservices architectures. Skilled in Java, Python, SQL, and modern backend technologies.",
   imageUrl = profileImage,
   socialLinks = {
     github: "https://github.com/QudahM",
@@ -32,39 +31,114 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   return (
     <section className="min-h-screen relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center px-4 py-16 overflow-hidden">
-      {/* Grid pattern overlay */}
+      {/* Enhanced grid pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-purple-500/10" />
-      {/* Floating elements */}
+      
+      {/* Animated gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-purple-500/10 animate-pulse" />
+      <div className="absolute inset-0 bg-gradient-to-bl from-cyan-500/5 via-transparent to-pink-500/5" />
+      
+      {/* Subtle radial gradient for depth */}
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-blue-900/5 to-transparent" />
+      {/* Professional animated background */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-float"
+        {/* Animated geometric particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute w-2 h-2 bg-blue-400/20 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            transition={{
+              duration: Math.random() * 20 + 10,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "linear",
+            }}
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              opacity: 0.2,
+              opacity: Math.random() * 0.3 + 0.1,
+            }}
+          />
+        ))}
+        
+        {/* Floating code symbols with better design */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`symbol-${i}`}
+            className="absolute text-blue-300/10 font-mono text-6xl select-none"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              rotate: 0,
+            }}
+            animate={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              rotate: 360,
+            }}
+            transition={{
+              duration: Math.random() * 30 + 20,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "linear",
             }}
           >
-            {["JS", "TS", "Java", "Git", "AWS", "GO", "API",
-              "<> </>", "==", "fn", "src", "dev"].map((symbol, index) => (
-              <div
-                key={index}
-                className="text-purple-200 text-opacity-50 text-xl font-mono"
-                style={{
-                  transform: `rotate(${Math.random() * 360}deg)`,
-                  position: "absolute",
-                  left: `${Math.random() * 400 - 200}px`,
-                  top: `${Math.random() * 400 - 200}px`,
-                }}
-              >
-                {symbol}
-              </div>
-            ))}
-          </div>
+            {["{ }", "[ ]", "JS", "Git", "AWS", "GO", "API",][i]}
+          </motion.div>
+        ))}
+
+        {/* Animated connecting lines */}
+        <svg className="absolute inset-0 w-full h-full">
+          {[...Array(5)].map((_, i) => (
+            <motion.line
+              key={`line-${i}`}
+              x1={Math.random() * 100 + "%"}
+              y1={Math.random() * 100 + "%"}
+              x2={Math.random() * 100 + "%"}
+              y2={Math.random() * 100 + "%"}
+              stroke="rgba(59, 130, 246, 0.1)"
+              strokeWidth="1"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 0.3 }}
+              transition={{
+                duration: Math.random() * 3 + 2,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </svg>
+
+        {/* Subtle tech icons floating */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={`tech-${i}`}
+            className="absolute text-purple-300/8 text-4xl font-bold"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              scale: 0.5,
+            }}
+            animate={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              scale: 1,
+            }}
+            transition={{
+              duration: Math.random() * 25 + 15,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          >
+          </motion.div>
         ))}
       </div>
 
