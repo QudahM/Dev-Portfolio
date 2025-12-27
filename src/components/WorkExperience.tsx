@@ -122,7 +122,7 @@ const WorkExperienceSection = ({
           <h2 className="text-3xl font-bold mb-4 text-white relative z-10">
             Work Experience
           </h2>
-          <p className="text-gray-200 max-w-2xl mx-auto relative z-10">
+          <p className="text-gray-300 max-w-2xl mx-auto relative z-10">
             Click on any role to learn more about my professional journey and
             contributions
           </p>
@@ -139,16 +139,16 @@ const WorkExperienceSection = ({
               onMouseLeave={() => setHoveredId(null)}
             >
               <Card
-                className={`bg-slate-200 transform transition-all duration-300 cursor-pointer ${hoveredId === exp.id ? "scale-[1.02] shadow-lg" : ""}`}
+                className={`bg-slate-800/50 backdrop-blur-sm border-slate-700/50 shadow-xl transform transition-all duration-300 cursor-pointer ${hoveredId === exp.id ? "scale-[1.02] shadow-2xl border-slate-600/50" : ""}`}
                 onClick={() => setSelectedExperience(exp)}
               >
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle className="text-xl font-bold">
+                      <CardTitle className="text-xl font-bold text-white">
                         {exp.role}
                       </CardTitle>
-                      <div className="flex items-center gap-2 text-gray-600 mt-1">
+                      <div className="flex items-center gap-2 text-gray-300 mt-1">
                         {exp.logo ? (
                           <img
                             src={exp.logo}
@@ -167,26 +167,26 @@ const WorkExperienceSection = ({
                     <Button
                       variant="ghost"
                       size="icon"
-                      className={`transition-transform duration-300 ${hoveredId === exp.id ? "translate-x-2" : ""}`}
+                      className={`transition-transform duration-300 text-gray-400 hover:text-white hover:bg-slate-700/50 ${hoveredId === exp.id ? "translate-x-2" : ""}`}
                     >
                       <ChevronRight className="w-9 h-8" />
                     </Button>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <ul className="list-disc list-inside space-y-2 mb-4 text-gray-600">
+                  <ul className="list-disc list-inside space-y-2 mb-4 text-gray-300">
                     {exp.description.slice(0, 3).map((item, i) => (
                       <li key={i}>{item}</li>
                     ))}
                   </ul>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.slice(0, 4).map((tech, i) => (
-                      <Badge key={i} variant="secondary">
+                      <Badge key={i} variant="outline" className="bg-slate-700/30 text-gray-300 border-slate-600/50">
                         {tech}
                       </Badge>
                     ))}
                     {exp.technologies.length > 4 && (
-                      <Badge variant="secondary">
+                      <Badge variant="outline" className="bg-slate-700/30 text-gray-300 border-slate-600/50">
                         +{exp.technologies.length - 4} more
                       </Badge>
                     )}

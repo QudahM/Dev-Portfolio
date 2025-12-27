@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Github, Linkedin, Mail, FileText } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, Send, User, MessageSquare } from "lucide-react";
 import myResume from "/Mohammad Qudah-Resume.pdf";
 import { motion } from "framer-motion";
 
@@ -49,7 +49,9 @@ const ContactSection = ({
       const subject = encodeURIComponent(
         `Portfolio Contact from ${formData.name}`
       );
-      const body = encodeURIComponent(`Message:\n${formData.message}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\n\nMessage:\n${formData.message}`
+      );
       const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
 
       // Open email client
@@ -69,50 +71,6 @@ const ContactSection = ({
       setIsSubmitting(false);
     }
   };
-  const [particles, setParticles] = useState<
-    Array<{
-      id: number;
-      size: number;
-      color: string;
-      x: number;
-      y: number;
-      tx: number;
-      ty: number;
-      r: number;
-      duration: number;
-    }>
-  >([]);
-
-  useEffect(() => {
-    const newParticles = [];
-    const colors = [
-      "rgba(59,130,246,0.4)",
-      "rgba(147,51,234,0.4)",
-      "rgba(236,72,153,0.4)",
-    ];
-
-    for (let i = 0; i < 15; i++) {
-      const x = Math.random() * 100; // random x position (0-100%)
-      const y = Math.random() * 100; // random y position (0-100%)
-      const tx = (Math.random() - 0.5) * 200; // random x translation (-100px to 100px)
-      const ty = (Math.random() - 0.5) * 200; // random y translation (-100px to 100px)
-      const r = Math.random() * 360; // random rotation (0-360deg)
-      const size = Math.random() * 6 + 2; // random size (2-8px)
-      const duration = Math.random() * 10 + 15; // random duration (15-25s)
-      newParticles.push({
-        id: i,
-        size,
-        color: colors[i % colors.length],
-        x,
-        y,
-        tx,
-        ty,
-        r,
-        duration,
-      });
-    }
-    setParticles(newParticles);
-  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -149,7 +107,6 @@ const ContactSection = ({
     },
     hover: {
       y: -5,
-      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
       transition: {
         duration: 0.3,
         ease: "easeInOut",
@@ -157,265 +114,219 @@ const ContactSection = ({
     },
   };
 
-  const socialLinkVariants = {
-    initial: { x: 0 },
-    hover: {
-      x: 5,
-      transition: {
-        duration: 0.2,
-        ease: "easeInOut",
-      },
-    },
-  };
-
   return (
-    <section className="w-full bg-gray-900 py-20 px-4 relative overflow-hidden">
-      {/* Grid pattern */}
+    <section className="w-full bg-gray-900 py-16 px-4 relative overflow-hidden">
+      {/* Enhanced Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      
+      {/* Animated gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 via-transparent to-purple-500/5" />
+      <div className="absolute inset-0 bg-gradient-to-bl from-cyan-500/3 via-transparent to-pink-500/3" />
 
-      {/* Floating particles */}
+      {/* Floating orbs */}
       <div className="absolute inset-0 overflow-hidden">
-        {particles.map((particle) => (
+        {[...Array(6)].map((_, i) => (
           <motion.div
-            key={particle.id}
-            className="absolute rounded-full"
-            style={{
-              width: particle.size,
-              height: particle.size,
-              backgroundColor: particle.color,
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              transform: `translate(-50%, -50%) rotate(${particle.r}deg)`,
-            }}
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              x: `${particle.tx}%`,
-              y: `${particle.ty}%`,
-              rotate: particle.r,
-              transition: {
-                duration: particle.duration,
-                ease: "linear",
-                repeat: Infinity,
-                repeatType: "mirror",
-              },
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Connection lines animation */}
-      <div className="absolute inset-0">
-        {[...Array(9)].map((_, i) => (
-          <div
             key={i}
-            className="absolute w-full h-px"
+            className="absolute rounded-full opacity-20"
             style={{
-              background: `linear-gradient(90deg, transparent 0%, ${
-                [
-                  "rgba(59,130,246,0.2)",
-                  "rgba(147,51,234,0.2)",
-                  "rgba(236,72,153,0.2)",
-                ][i % 3]
-              } 50%, transparent 100%)`,
-              top: `${20 + i * 15}%`,
-              animation: `pulse-glow ${4 + i * 0.5}s infinite`,
-              transform: `rotate(${i * 22.5}deg)`,
+              width: Math.random() * 200 + 100,
+              height: Math.random() * 200 + 100,
+              background: `radial-gradient(circle at center, ${
+                ['rgba(59,130,246,0.3)', 'rgba(147,51,234,0.3)', 'rgba(236,72,153,0.3)'][i % 3]
+              } 0%, transparent 70%)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              x: [0, Math.random() * 100 - 50],
+              y: [0, Math.random() * 100 - 50],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
             }}
           />
         ))}
       </div>
-
-      <motion.div
-        className="max-w-6xl mx-auto"
+      
+      <motion.div 
+        className="max-w-6xl mx-auto relative z-10"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
         <motion.div className="text-center mb-12" variants={itemVariants}>
           <motion.h2
-            className="text-3xl font-bold mb-4 text-white relative z-10"
+            className="text-4xl font-bold mb-4 text-white"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Get In Touch
+            Let's Connect!
           </motion.h2>
-          <motion.p
-            className="text-gray-300 max-w-2xl mx-auto relative z-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.65, delay: 0.4 }}
-          >
-            Have a question or want to work together? Feel free to reach out!
-          </motion.p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 relative z-10">
-          {/* Contact Form */}
+        <div className="max-w-5xl mx-auto">
+          {/* Single Unified Card */}
           <motion.div
             initial="initial"
             animate="animate"
-            whileHover="hover"
             variants={cardVariants}
           >
-            <Card className="p-6 bg-slate-100 overflow-hidden relative h-[450px]">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 opacity-50 rounded-lg" />
-              <CardHeader className="relative z-10">
-                <CardTitle>Send a Message</CardTitle>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <motion.form
-                  className="space-y-6"
-                  variants={containerVariants}
-                  onSubmit={handleSubmit}
-                >
-                  <motion.div className="space-y-2" variants={itemVariants}>
-                    <Input
-                      type="text"
-                      name="name"
-                      placeholder="Your Name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full transition-all duration-300 hover:border-blue-400 focus:border-blue-500 focus:ring-blue-500"
-                    />
-                  </motion.div>
-                  <motion.div className="space-y-2" variants={itemVariants}>
-                    <Textarea
-                      name="message"
-                      placeholder="Your Message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full min-h-[200px] transition-all duration-300 hover:border-blue-400 focus:border-blue-500 focus:ring-blue-500"
-                    />
-                  </motion.div>
-                  <motion.div variants={itemVariants}>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Button
-                        type="submit"
-                        disabled={
-                          isSubmitting || !formData.name || !formData.message
-                        }
-                        className="w-full relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        <span className="relative z-10">
-                          {isSubmitting
-                            ? "Opening Email..."
-                            : submitStatus === "success"
-                            ? "Email Opened!"
-                            : submitStatus === "error"
-                            ? "Try Again"
-                            : "Send Message"}
-                        </span>
-                        <span className="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                      </Button>
-                    </motion.div>
-                    {submitStatus === "error" && (
-                      <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-red-600 text-sm mt-2 text-center"
-                      >
-                        Something went wrong. Please try again or email
-                        directly.
-                      </motion.p>
-                    )}
-                  </motion.div>
-                </motion.form>
-              </CardContent>
-            </Card>
-          </motion.div>
+            <Card className="bg-slate-800/50 backdrop-blur-sm border-slate-700/50 shadow-2xl">
+              <CardContent className="p-6">
+                <div className="grid lg:grid-cols-2 gap-8 relative">
+                  {/* Contact Form */}
+                  <div>
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+                        <MessageSquare className="w-6 h-6 text-blue-400" />
+                        Send a Message
+                      </h3>
+                    </div>
+                    <motion.form className="space-y-6" variants={containerVariants} onSubmit={handleSubmit}>
+                      <motion.div className="space-y-2" variants={itemVariants}>
+                        <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+                          <User className="w-4 h-4" />
+                          Your Name
+                        </label>
+                        <Input
+                          type="text"
+                          name="name"
+                          placeholder="Enter your name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          className="bg-slate-700/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400/20 transition-all duration-300"
+                        />
+                      </motion.div>
+                      
+                      <motion.div className="space-y-2" variants={itemVariants}>
+                        <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
+                          <MessageSquare className="w-4 h-4" />
+                          Your Message
+                        </label>
+                        <Textarea
+                          name="message"
+                          placeholder="Tell me about your project or idea..."
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          required
+                          className="bg-slate-700/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400/20 min-h-[120px] transition-all duration-300 resize-none"
+                        />
+                      </motion.div>
+                      
+                      <motion.div variants={itemVariants}>
+                        <motion.div
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <Button 
+                            type="submit" 
+                            disabled={isSubmitting || !formData.name || !formData.message}
+                            className="w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl border border-slate-600 hover:border-slate-500"
+                          >
+                            <Send className="w-4 h-4 mr-2" />
+                            {isSubmitting ? 'Sending...' : 
+                             submitStatus === 'success' ? '✓ Message Sent!' :
+                             submitStatus === 'error' ? '✗ Try Again' :
+                             'Send Message'}
+                          </Button>
+                        </motion.div>
+                        {submitStatus === 'error' && (
+                          <motion.p 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-red-400 text-sm mt-3 text-center"
+                          >
+                            Something went wrong. Please try again or email directly.
+                          </motion.p>
+                        )}
+                      </motion.div>
+                    </motion.form>
+                  </div>
 
-          {/* Social Links */}
-          <motion.div
-            initial="initial"
-            animate="animate"
-            whileHover="hover"
-            variants={cardVariants}
-          >
-            <Card className="p-6 bg-slate-100 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-blue-50 opacity-50" />
-              <CardHeader className="relative z-10">
-                <CardTitle>Connect With Me</CardTitle>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <motion.div className="space-y-6" variants={containerVariants}>
-                  <motion.a
-                    href={`mailto:${email}`}
-                    className="flex items-center space-x-4 text-gray-600 hover:text-red-400 transition-colors p-3 rounded-lg hover:bg-red-100 group"
-                    variants={itemVariants}
-                    whileHover="hover"
-                  >
-                    <motion.div
-                      className="bg-red-100 p-2 rounded-full text-red-400"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                    >
-                      <Mail className="w-6 h-6" />
+                  {/* Vertical Dotted Line Separator */}
+                  <div className="absolute left-1/2 top-0 bottom-0 w-px border-l-2 border-dotted border-slate-600 transform -translate-x-1/2 hidden lg:block"></div>
+
+                  {/* Contact Links */}
+                  <div>
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-white">Connect With Me</h3>
+                    </div>
+                    <motion.div className="space-y-4" variants={containerVariants}>
+                      <motion.a
+                        href={`mailto:${email}`}
+                        className="group flex items-center p-3 bg-slate-700/30 backdrop-blur-sm border border-slate-600/50 rounded-xl hover:bg-slate-600/50 hover:border-red-400/50 transition-all duration-300"
+                        variants={itemVariants}
+                        whileHover={{ x: 5, scale: 1.02 }}
+                      >
+                        <div className="bg-red-500/20 p-2 rounded-lg text-red-400 group-hover:bg-red-500/30 transition-colors">
+                          <Mail className="w-5 h-5" />
+                        </div>
+                        <div className="ml-3 flex-1">
+                          <h4 className="text-white font-semibold text-sm">Email</h4>
+                          <p className="text-gray-300 text-xs">{email}</p>
+                        </div>
+                      </motion.a>
+
+                      <motion.a
+                        href={github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center p-3 bg-slate-700/30 backdrop-blur-sm border border-slate-600/50 rounded-xl hover:bg-slate-600/50 hover:border-gray-400/50 transition-all duration-300"
+                        variants={itemVariants}
+                        whileHover={{ x: 5, scale: 1.02 }}
+                      >
+                        <div className="bg-gray-500/20 p-2 rounded-lg text-gray-400 group-hover:bg-gray-500/30 transition-colors">
+                          <Github className="w-5 h-5" />
+                        </div>
+                        <div className="ml-3 flex-1">
+                          <h4 className="text-white font-semibold text-sm">GitHub</h4>
+                          <p className="text-gray-300 text-xs">View my code and projects</p>
+                        </div>
+                      </motion.a>
+
+                      <motion.a
+                        href={linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center p-3 bg-slate-700/30 backdrop-blur-sm border border-slate-600/50 rounded-xl hover:bg-slate-600/50 hover:border-blue-400/50 transition-all duration-300"
+                        variants={itemVariants}
+                        whileHover={{ x: 5, scale: 1.02 }}
+                      >
+                        <div className="bg-blue-500/20 p-2 rounded-lg text-blue-400 group-hover:bg-blue-500/30 transition-colors">
+                          <Linkedin className="w-5 h-5" />
+                        </div>
+                        <div className="ml-3 flex-1">
+                          <h4 className="text-white font-semibold text-sm">LinkedIn</h4>
+                          <p className="text-gray-300 text-xs">Professional network</p>
+                        </div>
+                      </motion.a>
+
+                      <motion.a
+                        href={resume}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center p-3 bg-slate-700/30 backdrop-blur-sm border border-slate-600/50 rounded-xl hover:bg-slate-600/50 hover:border-green-400/50 transition-all duration-300"
+                        variants={itemVariants}
+                        whileHover={{ x: 5, scale: 1.02 }}
+                      >
+                        <div className="bg-green-500/20 p-2 rounded-lg text-green-400 group-hover:bg-green-500/30 transition-colors">
+                          <FileText className="w-5 h-5" />
+                        </div>
+                        <div className="ml-3 flex-1">
+                          <h4 className="text-white font-semibold text-sm">Resume</h4>
+                          <p className="text-gray-300 text-xs">Download my CV</p>
+                        </div>
+                      </motion.a>
                     </motion.div>
-                    <motion.span variants={socialLinkVariants}>
-                      {email}
-                    </motion.span>
-                  </motion.a>
-                  <motion.a
-                    href={github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-4 text-gray-600 hover:text-gray-900 transition-colors p-3 rounded-lg hover:bg-gray-300 group"
-                    variants={itemVariants}
-                    whileHover="hover"
-                  >
-                    <motion.div
-                      className="bg-gray-300 p-2 rounded-full text-gray-700"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                    >
-                      <Github className="w-6 h-6" />
-                    </motion.div>
-                    <motion.span variants={socialLinkVariants}>
-                      GitHub
-                    </motion.span>
-                  </motion.a>
-                  <motion.a
-                    href={linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-4 text-gray-600 hover:text-blue-700 transition-colors p-3 rounded-lg hover:bg-blue-100 group"
-                    variants={itemVariants}
-                    whileHover="hover"
-                  >
-                    <motion.div
-                      className="bg-blue-100 p-2 rounded-full text-blue-700"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                    >
-                      <Linkedin className="w-6 h-6" />
-                    </motion.div>
-                    <motion.span variants={socialLinkVariants}>
-                      LinkedIn
-                    </motion.span>
-                  </motion.a>
-                  <motion.a
-                    href={resume}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-4 text-gray-600 hover:text-green-700 transition-colors p-3 rounded-lg hover:bg-green-100 group"
-                    variants={itemVariants}
-                    whileHover="hover"
-                  >
-                    <motion.div
-                      className="bg-green-100 p-2 rounded-full text-green-700"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                    >
-                      <FileText className="w-6 h-6" />
-                    </motion.div>
-                    <motion.span variants={socialLinkVariants}>
-                      Resume
-                    </motion.span>
-                  </motion.a>
-                </motion.div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </motion.div>

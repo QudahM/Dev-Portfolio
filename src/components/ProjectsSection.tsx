@@ -31,11 +31,22 @@ const defaultProjects: Project[] = [
     title: "GrantBridge",
     description:
       "GrantBridge is a smart scholarship and grant discovery platform that uses Sonar AI to find the best opportunities, simplify eligibility, and assist with applications, aiming to make funding more accessible for students and creatives.",
-    imageUrls: ["/assets/projects/Grantbridge_homepage.png", "/assets/projects/Grantbridge_mainpageDM.png", "/assets/projects/Grantbridge_applicationAssistant.png"],
+    imageUrls: [
+      "/assets/projects/Grantbridge_homepage.png",
+      "/assets/projects/Grantbridge_mainpageDM.png",
+      "/assets/projects/Grantbridge_applicationAssistant.png",
+    ],
     demoUrl: "https://grantbridge.online/",
     githubUrl: "https://github.com/QudahM/GrantBridge",
     categories: ["Fullstack", "API", "Cloud Hosted", "Backend"],
-    technologies: ["React", "TypeScript", "Express.js", "Perplexity API", "AWS", "Docker"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Express.js",
+      "Perplexity API",
+      "AWS",
+      "Docker",
+    ],
     features: [
       "AI-powered grant/scholarships discovery based on user profile",
       "Converts complex eligibility criteria into plain, digestible language",
@@ -50,11 +61,21 @@ const defaultProjects: Project[] = [
     title: "Collaborative Canvas",
     description:
       "A real-time collaborative whiteboard app. Supports simultaneous drawing, team chat, and user presence tracking via WebSockets. Designed for seamless remote brainstorming and team ideation.",
-    imageUrls: ["/assets/projects/canvas_mainpage.png", "/assets/projects/canvas_mainpageww.png"],
+    imageUrls: [
+      "/assets/projects/canvas_mainpage.png",
+      "/assets/projects/canvas_mainpageww.png",
+    ],
     demoUrl: "https://collaborative-canvas-25764.firebaseapp.com/",
     githubUrl: "https://github.com/QudahM/Collaborative-Canvas",
     categories: ["Fullstack", "API", "Cloud Hosted", "Backend"],
-    technologies: ["Go", "React", "TypeScript", "Google Cloud Platform", "Redis", "Docker"],
+    technologies: [
+      "Go",
+      "React",
+      "TypeScript",
+      "Google Cloud Platform",
+      "Redis",
+      "Docker",
+    ],
     features: [
       "Real-time collaborative drawing canvas",
       "Live user presence tracking to know how many users are online",
@@ -69,7 +90,10 @@ const defaultProjects: Project[] = [
     title: "Room Change AI",
     description:
       "An AI-powered tool that generates a redesigned image of a user's room based on selected dimensions, decor styles, and preferences. Built with modern web technologies and integrated with OpenAI's GPT for intelligent prompt interpretation and concept visualization.",
-    imageUrls: ["/assets/projects/roomImage.png", "/assets/projects/roomDesign.png"],
+    imageUrls: [
+      "/assets/projects/roomImage.png",
+      "/assets/projects/roomDesign.png",
+    ],
     demoUrl: "https://roomchangeai.qudahm.com/",
     githubUrl: "https://github.com/QudahM/InteriorDecorating",
     categories: ["Fullstack", "API", "Cloud Hosted"],
@@ -88,17 +112,28 @@ const defaultProjects: Project[] = [
     title: "QR Nexus",
     description:
       "A QR code generation and analytics platform, where you can verify the safety of QR codes. Create beautiful, trackable QR codes with real-time analytics, security verification, and advanced customization options. Featured on Bolt Gallery under the Productivity category.",
-    imageUrls: ["/assets/projects/qrnexus_homepage.png","/assets/projects/qrnexus_gallery.png", "/assets/projects/qrnexus_verifypage.png", "/assets/projects/qrnexus_generatepage.png"],
+    imageUrls: [
+      "/assets/projects/qrnexus_homepage.png",
+      "/assets/projects/qrnexus_gallery.png",
+      "/assets/projects/qrnexus_verifypage.png",
+      "/assets/projects/qrnexus_generatepage.png",
+    ],
     demoUrl: "https://qrnexus.site/",
     githubUrl: "https://github.com/QudahM/QR-Verify",
     categories: ["Fullstack", "API", "Cloud Hosted", "Database"],
-    technologies: ["TypeScript", "React", "PostgreSQL", "Vite", "Google Safe Browsing API"],
+    technologies: [
+      "TypeScript",
+      "React",
+      "PostgreSQL",
+      "Vite",
+      "Google Safe Browsing API",
+    ],
     features: [
       "Instant QR code generation with real-time updates",
       "Advanced design customization: gradients, logos, shapes",
       "Security verification using Google Safe Browsing API",
       "Detailed analytics dashboard with scan tracking and visualizations",
-      "Fully responsive UI with dark/light mode and smooth transitions"
+      "Fully responsive UI with dark/light mode and smooth transitions",
     ],
     extraURL: "https://bolt.new/gallery/categories/productivity",
     extraLabel: "Featured",
@@ -109,8 +144,12 @@ const defaultProjects: Project[] = [
     title: "Pixel Shift Daily Puzzle",
     description:
       "A daily color-matching puzzle game built with Devvit and Reddit WebViews. Players rearrange tiles to match a randomly generated pattern using the fewest moves possible. Features leaderboard integration and smooth UI animations.",
-    imageUrls: ["/assets/projects/redditHackathon.png", "/assets/projects/redditHackathonDashboard.png"],
-    demoUrl: "https://www.reddit.com/r/Pixel0Shift/comments/1jjet6q/pixel_shift_daily_puzzle_can_you_beat_todays/",
+    imageUrls: [
+      "/assets/projects/redditHackathon.png",
+      "/assets/projects/redditHackathonDashboard.png",
+    ],
+    demoUrl:
+      "https://www.reddit.com/r/Pixel0Shift/comments/1jjet6q/pixel_shift_daily_puzzle_can_you_beat_todays/",
     githubUrl: "https://github.com/QudahM/pixel-shift",
     categories: ["Frontend", "API", "Cloud Hosted"],
     technologies: ["JavaScript", "React", "HTML/CSS", "Devvit", "Rddit API"],
@@ -119,7 +158,7 @@ const defaultProjects: Project[] = [
       "Redis-backed leaderboard that stores top scores per post",
       "Interactive tile-shifting game built from scratch in JavaScript",
       "Fully integrated with Reddit's Devvit platform",
-      "Participant in the Hack Reddit 2025 Hackathon"
+      "Participant in the Hack Reddit 2025 Hackathon",
     ],
   },
   {
@@ -141,7 +180,7 @@ const defaultProjects: Project[] = [
       "Logging and analytics",
     ],
   },
-   /*{
+  /*{
     id: 7,
     date: "2025",
     title: "Valentine Project",
@@ -246,7 +285,7 @@ const ProjectsSection = ({
             onClose={() => setSelectedProject(null)}
             project={{
               ...selectedProject,
-              category: selectedProject.categories[0] || "Uncategorized"
+              category: selectedProject.categories[0] || "Uncategorized",
             }}
           />
         )}

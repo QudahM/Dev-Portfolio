@@ -235,7 +235,7 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
       "brightness(1) blur(0px)",
     ],
     transition: {
-      duration: 8 + (index % 5),
+      duration: 15 + (index % 5) * 2, // Increased from 8 + (index % 5) to make it slower
       repeat: Infinity,
       repeatType: "loop" as const,
       ease: "easeInOut",
@@ -277,7 +277,7 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
                 scale: [0, 1.5, 0],
               }}
               transition={{
-                duration: 5 + Math.random() * 5,
+                duration: 8 + Math.random() * 4, // Increased from 5 + Math.random() * 5 to make it slower
                 repeat: Infinity,
                 repeatType: "loop",
                 ease: "easeInOut",
@@ -335,7 +335,7 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
                             ]
                           }}
                           transition={{
-                            duration: 5 + (index % 3),
+                            duration: 12 + (index % 3) * 2, // Increased from 5 + (index % 3) to make it slower
                             repeat: Infinity,
                             repeatType: "loop",
                             ease: "easeInOut",

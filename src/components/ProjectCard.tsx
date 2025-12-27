@@ -41,7 +41,7 @@ const ProjectCard = ({
         <img
           src={imageUrls[0]}
           alt={title}
-              className="mx-auto max-h-[300px] w-auto object-contain transition-transform duration-500"
+          className="w-full h-full object-cover transition-transform duration-500"
         />
 
         {/* Overlay Content */}

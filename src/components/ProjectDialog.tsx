@@ -51,11 +51,11 @@ export function ProjectDialog({
 
         <div className="mt-4 space-y-6">
           {/* Carousel Image Section */}
-          <div className="relative h-[300px] rounded-lg overflow-hidden group">
+          <div className="relative rounded-lg overflow-hidden group">
             <img
               src={project.imageUrls[currentImage]}
               alt={`${project.title} - Slide ${currentImage + 1}`}
-              className="w-full h-full object-contain border border-black bg-white rounded-md"
+              className="w-full max-h-[400px] object-cover border border-black rounded-md"
             />
             {/* Carousel controls */}
             {project.imageUrls.length > 1 && (
