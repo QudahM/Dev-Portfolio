@@ -15,7 +15,7 @@ interface ContactSectionProps {
 }
 
 const ContactSection = ({
-  email = "qudahmohammad2002@gmail.com",
+  email = "mohammad.r.qudah1@gmail.com",
   github = "https://github.com/QudahM",
   linkedin = "https://linkedin.com/in/QudahM",
   resume = myResume,
